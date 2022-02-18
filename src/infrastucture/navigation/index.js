@@ -9,4 +9,3 @@ export const Navigation = () => {
     </NavigationContainer>
   );
 };
-yarn

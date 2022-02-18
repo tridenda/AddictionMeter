@@ -6,9 +6,9 @@ import { HomeNavigator } from "./home.navigator";
 const Tab = createBottomTabNavigator();
 
 const TAB_ICON = {
-  Home: "home",
-  History: "layers",
-  Settings: "md-settings",
+  Beranda: "home",
+  Riwayat: "layers",
+  Pengaturan: "md-settings",
 };
 
 const createTabBarIcon = (route) => {
@@ -26,13 +26,13 @@ export const AppNavigator = () => {
         tabBarIcon: createTabBarIcon(route),
         tabBarActiveTintColor: "#005152",
         tabBarInactiveTintColror: "#808080",
-        headerShown: true,
+        headerShown: false,
         headerTitleAlign: "center",
       })}
     >
-      <Tab.Screen name="Home" component={HomeNavigator} />
-      <Tab.Screen name="History" component={() => null} />
-      <Tab.Screen name="Settings" component={() => null} />
+      <Tab.Screen name="Beranda" component={HomeNavigator} />
+      <Tab.Screen name="Riwayat" component={() => null} />
+      <Tab.Screen name="Pengaturan" component={() => null} />
     </Tab.Navigator>
   );
 };
