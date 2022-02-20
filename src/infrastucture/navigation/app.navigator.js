@@ -7,7 +7,7 @@ const Tab = createBottomTabNavigator();
 
 const TAB_ICON = {
   Beranda: "home",
-  Riwayat: "layers",
+  Riwayat: "calendar",
   Pengaturan: "md-settings",
 };
 
