@@ -21,9 +21,9 @@ export const HomeNavigator = () => {
       <HomeStack.Screen name="Data Kecanduan" component={() => null} />
       <HomeStack.Screen name="Ubah Kecanduan" component={() => null} />
 
-      <HomeStack.Screen name="Data Tingkat Kecanduan" component={() => null} />
+      <HomeStack.Screen name="Tingkat Kecanduan" component={() => null} />
       <HomeStack.Screen
-        name="Tambah Tingkat Kecanduan "
+        name="Tambah Tingkat Kecanduan"
         component={() => null}
       />
       <HomeStack.Screen name="Ubah Tingkat Kecanduan" component={() => null} />
@@ -31,8 +31,8 @@ export const HomeNavigator = () => {
       <HomeStack.Screen name="Data Aturan" component={() => null} />
       <HomeStack.Screen name="Ubah Aturan" component={() => null} />
 
-      <HomeStack.Screen name="Tentang" component={() => null} />
-      <HomeStack.Screen name="Profil" component={() => null} />
+      <HomeStack.Screen name="Tentang Aplikasi" component={() => null} />
+      <HomeStack.Screen name="Profil Pengguna" component={() => null} />
     </HomeStack.Navigator>
   );
 };
