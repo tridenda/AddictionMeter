@@ -12,7 +12,7 @@ export const MenuScreen = ({ navigation }) => {
   return (
     <ScrollView>
       <ContainerMenu>
-        <ButtonMenu onPress={() => navigation.navigate("Deteksi")}>
+        <ButtonMenu onPress={() => navigation.navigate("Deteksi Kecanduan")}>
           <Ionicons name="finger-print" size={50} color="gray" />
           <TitleMenu>Deteksi Kecanduan</TitleMenu>
         </ButtonMenu>

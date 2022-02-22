@@ -2,6 +2,7 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import { MenuScreen } from "../../features/menu/screens/menu.screen";
+import { DetectionScreen } from "../../features/detection/screens/detection.screen";
 
 const HomeStack = createStackNavigator();
 
@@ -10,7 +11,7 @@ export const HomeNavigator = () => {
     <HomeStack.Navigator screenOptions={{ headerTitleAlign: "center" }}>
       <HomeStack.Screen name="Beranda" component={MenuScreen} />
 
-      <HomeStack.Screen name="Deteksi" component={() => null} />
+      <HomeStack.Screen name="Deteksi Kecanduan" component={DetectionScreen} />
       <HomeStack.Screen name="Hasil" component={() => null} />
       <HomeStack.Screen name="Riwayat" component={() => null} />
 
