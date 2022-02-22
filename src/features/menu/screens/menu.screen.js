@@ -1,68 +1,40 @@
 import React from "react";
-import { TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import styled from "styled-components";
 import { Ionicons } from "@expo/vector-icons";
 
-const ContainerMenu = styled.View`
-  flex: 1;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 8px;
-`;
+import {
+  ContainerMenu,
+  ButtonMenu,
+  TitleMenu,
+} from "../components/menu.styles";
 
-const ButtonMenu = styled(TouchableOpacity)`
-  height: 150px;
-  width: 44%;
-  align-items: center;
-  justify-content: center;
-  border-radius: ${(props) => props.theme.sizes[1]};
-  border-width: 1px;
-  border-color: gray;
-  margin: ${(props) => props.theme.space[2]};
-`;
-
-const TitleMenu = styled.Text`
-  flex-wrap: wrap;
-  font-size: 20px;
-  margin: 10px;
-  text-align: center;
-`;
-
-export const MenuScreen = () => {
+export const MenuScreen = ({ navigation }) => {
   return (
     <ScrollView>
       <ContainerMenu>
-        <ButtonMenu>
+        <ButtonMenu onPress={() => navigation.navigate("Deteksi")}>
           <Ionicons name="finger-print" size={50} color="gray" />
           <TitleMenu>Deteksi Kecanduan</TitleMenu>
         </ButtonMenu>
-        <ButtonMenu>
+        <ButtonMenu onPress={() => navigation.navigate("Riwayat")}>
           <Ionicons name="calendar" size={50} color="gray" />
           <TitleMenu>Riwayat Kecanduan</TitleMenu>
         </ButtonMenu>
-        <ButtonMenu>
+
+        <ButtonMenu onPress={() => navigation.navigate("Data Gejala")}>
           <Ionicons name="albums" size={50} color="gray" />
           <TitleMenu>Data Gejala</TitleMenu>
         </ButtonMenu>
-        <ButtonMenu>
-          <Ionicons name="folder" size={50} color="gray" />
-          <TitleMenu>Data Kecanduan</TitleMenu>
-        </ButtonMenu>
-        <ButtonMenu>
+        <ButtonMenu onPress={() => navigation.navigate("Tingkat Kecanduan")}>
           <Ionicons name="analytics" size={50} color="gray" />
           <TitleMenu>Tingkat Kecanduan</TitleMenu>
         </ButtonMenu>
-        <ButtonMenu>
-          <Ionicons name="folder-open" size={50} color="gray" />
-          <TitleMenu>Data Aturan</TitleMenu>
-        </ButtonMenu>
-        <ButtonMenu>
+
+        <ButtonMenu onPress={() => navigation.navigate("Tentang Aplikasi")}>
           <Ionicons name="alert-circle" size={50} color="gray" />
-          <TitleMenu>Tentang Aplikasi</TitleMenu>
+          <TitleMenu>Tentang</TitleMenu>
         </ButtonMenu>
-        <ButtonMenu>
+        <ButtonMenu onPress={() => navigation.navigate("Profil Pengguna")}>
           <Ionicons name="person" size={50} color="gray" />
           <TitleMenu>Profil Pengguna</TitleMenu>
         </ButtonMenu>
