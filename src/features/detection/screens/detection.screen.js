@@ -2,6 +2,7 @@ import React from "react";
 import { ScrollView } from "react-native-gesture-handler";
 import { TouchableOpacity } from "react-native";
 
+import { SafeArea } from "../../../components/utility/safe-area.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { Text } from "../../../components/typography/text.component";
 import { CustomButton } from "../../../components/buttons/custom-button.component";
@@ -27,33 +28,36 @@ const options = [
 
 export const DetectionScreen = ({ navigation }) => {
   return (
-    <ScrollView>
-      <QuestionContianer>
-        <Text variant="title">Pertanyaan 1</Text>
-        <Spacer position="top" size="medium" />
-        <Text variant="body">
-          Jika anda tidak sedang memainkan online game apakah anda menghabiskan
-          berpikir tentang online game atau merencanakan berikutnya?
-        </Text>
-      </QuestionContianer>
-      <OptionContainer>
-        {options.map((elem, i) => {
-          return (
-            <TouchableOpacity
-              key={`OptionButton-${i}`}
-              onPress={() => navigation.navigate("Hasil")}
-              value={elem[1]}
-            >
-              <OptionButton>{elem[0]}</OptionButton>
-            </TouchableOpacity>
-          );
-        })}
-      </OptionContainer>
-      <NavigationContainer>
-        <TouchableOpacity>
-          <CustomButton title="KEMBALI" />
-        </TouchableOpacity>
-      </NavigationContainer>
-    </ScrollView>
+    <SafeArea>
+      <ScrollView>
+        <QuestionContianer>
+          <Text variant="title">Pertanyaan 1</Text>
+          <Spacer position="top" size="medium" />
+          <Text variant="body">
+            Jika anda tidak sedang memainkan online game apakah anda
+            menghabiskan berpikir tentang online game atau merencanakan
+            berikutnya?
+          </Text>
+        </QuestionContianer>
+        <OptionContainer>
+          {options.map((elem, i) => {
+            return (
+              <TouchableOpacity
+                key={`OptionButton-${i}`}
+                onPress={() => navigation.navigate("Hasil")}
+                value={elem[1]}
+              >
+                <OptionButton>{elem[0]}</OptionButton>
+              </TouchableOpacity>
+            );
+          })}
+        </OptionContainer>
+        <NavigationContainer>
+          <TouchableOpacity>
+            <CustomButton title="KEMBALI" />
+          </TouchableOpacity>
+        </NavigationContainer>
+      </ScrollView>
+    </SafeArea>
   );
 };

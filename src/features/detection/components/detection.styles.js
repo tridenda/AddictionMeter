@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const QuestionContianer = styled.View`
-  background: white;
+  background: ${(props) => props.theme.colors.bg.secondary};
   padding: ${(props) => props.theme.space[3]};
   margin-top: ${(props) => props.theme.space[4]};
 `;

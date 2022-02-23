@@ -7,7 +7,7 @@ import { Text } from "../../../components/typography/text.component";
 const Container = styled.View`
   width: 100%;
   height: 50px;
-  background-color: ${(props) => props.theme.colors.bg.tertiary};
+  background-color: ${(props) => props.theme.colors.bg.secondary};
   border-radius: 10px;
   border-width: 1px;
   border-color: #808080;
