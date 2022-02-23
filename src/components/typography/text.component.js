@@ -37,6 +37,11 @@ const title = (theme) => `
     font-size: ${theme.fontSizes.title};
 `;
 
+const highlight = (theme) => `
+    font-family: ${theme.fonts.heading};
+    font-size: ${theme.fontSizes.h3};
+`;
+
 const button = (theme) => `
     font-family: ${theme.fonts.heading};
     font-size: ${theme.fontSizes.body};
@@ -44,6 +49,7 @@ const button = (theme) => `
 
 const variants = {
   button,
+  highlight,
   title,
   body,
   label,

@@ -4,7 +4,7 @@ import { Text } from "../typography/text.component";
 
 const Container = styled.View`
   width: 150px;
-  height: 45px;
+  height: 50px;
   background-color: ${(props) => props.theme.colors.bg.tertiary};
   border-radius: 15px;
   border-width: 1px;
@@ -14,10 +14,17 @@ const Container = styled.View`
   align-self: center;
 `;
 
+const ButtonText = styled(Text).attrs({
+  variant: "button",
+})`
+  text-align: center;
+  justify-content: center;
+`;
+
 export const CustomButton = ({ title }) => {
   return (
     <Container>
-      <Text variant="button">{title}</Text>
+      <ButtonText variant="button">{title}</ButtonText>
     </Container>
   );
 };

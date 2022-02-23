@@ -2,9 +2,11 @@ import React from "react";
 import styled, { useTheme } from "styled-components";
 
 const sizeVariant = {
-  small: 1,
-  medium: 2,
-  large: 3,
+  sm: 1,
+  md: 2,
+  lg: 3,
+  xl: 4,
+  xxl: 5,
 };
 
 const positionVariant = {

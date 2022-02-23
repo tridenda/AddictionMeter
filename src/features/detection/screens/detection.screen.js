@@ -10,7 +10,6 @@ import { OptionButton } from "../components/option-button.component";
 import {
   OptionContainer,
   QuestionContianer,
-  NavigationContainer,
 } from "../components/detection.styles";
 
 const options = [
@@ -32,8 +31,8 @@ export const DetectionScreen = ({ navigation }) => {
       <ScrollView>
         <QuestionContianer>
           <Text variant="title">Pertanyaan 1</Text>
-          <Spacer position="top" size="medium" />
-          <Text variant="body">
+          <Spacer position="top" size="sm" />
+          <Text>
             Jika anda tidak sedang memainkan online game apakah anda
             menghabiskan berpikir tentang online game atau merencanakan
             berikutnya?
@@ -52,11 +51,10 @@ export const DetectionScreen = ({ navigation }) => {
             );
           })}
         </OptionContainer>
-        <NavigationContainer>
-          <TouchableOpacity>
-            <CustomButton title="KEMBALI" />
-          </TouchableOpacity>
-        </NavigationContainer>
+        <Spacer position="top" size="lg" />
+        <TouchableOpacity>
+          <CustomButton title="KEMBALI" />
+        </TouchableOpacity>
       </ScrollView>
     </SafeArea>
   );
