@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import { MenuScreen } from "../../features/menu/screens/menu.screen";
 import { DetectionScreen } from "../../features/detection/screens/detection.screen";
+import { ResultScreen } from "../../features/detection/screens/result.screen";
 
 const HomeStack = createStackNavigator();
 
@@ -12,7 +13,7 @@ export const HomeNavigator = () => {
       <HomeStack.Screen name="Beranda" component={MenuScreen} />
 
       <HomeStack.Screen name="Deteksi Kecanduan" component={DetectionScreen} />
-      <HomeStack.Screen name="Hasil" component={() => null} />
+      <HomeStack.Screen name="Hasil" component={ResultScreen} />
       <HomeStack.Screen name="Riwayat" component={() => null} />
 
       <HomeStack.Screen name="Data Gejala" component={() => null} />

@@ -9,7 +9,9 @@ const defaultTextStyles = (theme) => `
 `;
 
 const body = (theme) => `
+    font-family: ${theme.fonts.body};
     font-size: ${theme.fontSizes.body};
+    line-height: 28px;
 `;
 
 const hint = (theme) => `
@@ -30,7 +32,19 @@ const label = (theme) => `
     font-weight: ${theme.fontWeights.medium};
 `;
 
+const title = (theme) => `
+    font-family: ${theme.fonts.heading};
+    font-size: ${theme.fontSizes.title};
+`;
+
+const button = (theme) => `
+    font-family: ${theme.fonts.heading};
+    font-size: ${theme.fontSizes.body};
+`;
+
 const variants = {
+  button,
+  title,
   body,
   label,
   caption,
