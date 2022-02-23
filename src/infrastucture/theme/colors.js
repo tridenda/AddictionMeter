@@ -7,16 +7,17 @@ export const colors = {
   ui: {
     primary: "#f6fafb",
     secondary: "#c1c8c7",
-    tertiary: "#5e6668",
-    quaternary: "#f6fafb",
+    tertiary: "#808080",
+    quaternary: "#EDEDED",
     disabled: "#DEDEDE",
     error: "#D0421B",
     success: "#138000",
   },
   bg: {
-    primary: "#f6fafb",
-    secondary: "#c1c8c7",
-    tertiary: "#f6fafb",
+    primary: "#ffffff",
+    secondary: "#f6fafb",
+    tertiary: "#C9C9C9",
+    quaternary: "#252b31",
   },
   text: {
     primary: "#252b31",

@@ -1,18 +1,16 @@
 import React from "react";
 import { ScrollView } from "react-native-gesture-handler";
-import { Text, TouchableOpacity } from "react-native";
+import { TouchableOpacity } from "react-native";
 
-import {
-  Container,
-  Title,
-  Question,
-  OptionButton,
-  BackButton,
-  QuestionContianer,
-  ButtonText,
-  OptionText,
-} from "../components/detection.styles";
+import { SafeArea } from "../../../components/utility/safe-area.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
+import { Text } from "../../../components/typography/text.component";
+import { CustomButton } from "../../../components/buttons/custom-button.component";
+import { OptionButton } from "../components/option-button.component";
+import {
+  OptionContainer,
+  QuestionContianer,
+} from "../components/detection.styles";
 
 const options = [
   ["A. Sangat Pasti", 1],
@@ -27,36 +25,37 @@ const options = [
   ["J. Pasti Tidak", 0.1],
 ];
 
-export const DetectionScreen = () => {
+export const DetectionScreen = ({ navigation }) => {
   return (
-    <ScrollView>
-      <QuestionContianer>
-        <Title>Pertanyaan 1</Title>
-        <Question>
-          Jika anda tidak sedang memainkan online game apakah anda menghabiskan
-          berpikir tentang online game atau merencanakan berikutnya?
-        </Question>
-      </QuestionContianer>
-      <Container>
-        {options.map((elem, i) => {
-          return (
-            <TouchableOpacity key={`TouchableOpacity-${i}`}>
-              <Spacer position="top" size="large">
-                <OptionButton>
-                  <OptionText>{elem[0]}</OptionText>
-                </OptionButton>
-              </Spacer>
-            </TouchableOpacity>
-          );
-        })}
-        <Spacer position="top" size="large">
-          <TouchableOpacity>
-            <BackButton>
-              <ButtonText>Kembali</ButtonText>
-            </BackButton>
-          </TouchableOpacity>
-        </Spacer>
-      </Container>
-    </ScrollView>
+    <SafeArea>
+      <ScrollView>
+        <QuestionContianer>
+          <Text variant="title">Pertanyaan 1</Text>
+          <Spacer position="top" size="sm" />
+          <Text>
+            Jika anda tidak sedang memainkan online game apakah anda
+            menghabiskan berpikir tentang online game atau merencanakan
+            berikutnya?
+          </Text>
+        </QuestionContianer>
+        <OptionContainer>
+          {options.map((elem, i) => {
+            return (
+              <TouchableOpacity
+                key={`OptionButton-${i}`}
+                onPress={() => navigation.navigate("Hasil")}
+                value={elem[1]}
+              >
+                <OptionButton>{elem[0]}</OptionButton>
+              </TouchableOpacity>
+            );
+          })}
+        </OptionContainer>
+        <Spacer position="top" size="lg" />
+        <TouchableOpacity>
+          <CustomButton title="KEMBALI" />
+        </TouchableOpacity>
+      </ScrollView>
+    </SafeArea>
   );
 };
