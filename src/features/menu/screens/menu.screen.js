@@ -36,9 +36,9 @@ export const MenuScreen = ({ navigation }) => {
             <Ionicons name="alert-circle" size={50} color="gray" />
             <TitleMenu>Tentang</TitleMenu>
           </ButtonMenu>
-          <ButtonMenu onPress={() => navigation.navigate("Profil Pengguna")}>
-            <Ionicons name="person" size={50} color="gray" />
-            <TitleMenu>Profil Pengguna</TitleMenu>
+          <ButtonMenu onPress={() => navigation.navigate("Pengaturan")}>
+            <Ionicons name="settings" size={50} color="gray" />
+            <TitleMenu>Pengaturan</TitleMenu>
           </ButtonMenu>
           <ButtonMenu>
             <Ionicons name="log-out" size={50} color="gray" />
