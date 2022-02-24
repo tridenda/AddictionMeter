@@ -11,7 +11,7 @@ import {
 } from "../../../components/utility/containers.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
 
-export const ResultScreen = ({ navigation }) => {
+export const DetailScreen = ({ navigation }) => {
   return (
     <SafeArea>
       <ScrollView>

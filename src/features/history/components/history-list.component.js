@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 
 import { Text } from "../../../components/typography/text.component";
-import { Spacer } from "../../../components/spacer/spacer.component";
 
 const Container = styled.View`
   width: 100%;
