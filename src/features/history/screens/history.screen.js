@@ -3,9 +3,9 @@ import { TouchableOpacity, ScrollView } from "react-native";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import { HistoryList } from "../components/history-list.component";
-import { ListContainer } from "../components/history.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { CustomButton } from "../../../components/buttons/custom-button.component";
+import { MainContainer } from "../../../components/utility/containers.styles";
 
 const data = [
   {
@@ -39,7 +39,7 @@ export const HistoryScreen = ({ navigation }) => {
   return (
     <SafeArea>
       <ScrollView>
-        <ListContainer>
+        <MainContainer>
           {data.map((item, i) => {
             return (
               <Spacer position="top" size="lg" key={`Detail-${i}`}>
@@ -51,7 +51,7 @@ export const HistoryScreen = ({ navigation }) => {
               </Spacer>
             );
           })}
-        </ListContainer>
+        </MainContainer>
         <TouchableOpacity>
           <CustomButton title="HAPUS SEMUA" />
         </TouchableOpacity>

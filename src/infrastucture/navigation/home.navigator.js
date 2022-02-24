@@ -6,6 +6,8 @@ import { DetectionScreen } from "../../features/detection/screens/detection.scre
 import { ResultScreen } from "../../features/detection/screens/result.screen";
 import { HistoryScreen } from "../../features/history/screens/history.screen";
 import { DetailScreen } from "../../features/history/screens/detail.screen";
+import { AboutScreen } from "../../features/about/screens/about.screen";
+import { SymptomScreen } from "../../features/symptoms/screens/symptoms.screen";
 
 const HomeStack = createStackNavigator();
 
@@ -20,24 +22,15 @@ export const HomeNavigator = () => {
       <HomeStack.Screen name="Riwayat" component={HistoryScreen} />
       <HomeStack.Screen name="Detil Riwayat" component={DetailScreen} />
 
-      <HomeStack.Screen name="Data Gejala" component={() => null} />
+      <HomeStack.Screen name="Data Gejala" component={SymptomScreen} />
       <HomeStack.Screen name="Tambah Gejala" component={() => null} />
       <HomeStack.Screen name="Ubah Gejala" component={() => null} />
 
-      <HomeStack.Screen name="Data Kecanduan" component={() => null} />
-      <HomeStack.Screen name="Ubah Kecanduan" component={() => null} />
-
       <HomeStack.Screen name="Tingkat Kecanduan" component={() => null} />
-      <HomeStack.Screen
-        name="Tambah Tingkat Kecanduan"
-        component={() => null}
-      />
-      <HomeStack.Screen name="Ubah Tingkat Kecanduan" component={() => null} />
+      <HomeStack.Screen name="Tambah Tingkat" component={() => null} />
+      <HomeStack.Screen name="Ubah Tingkat" component={() => null} />
 
-      <HomeStack.Screen name="Data Aturan" component={() => null} />
-      <HomeStack.Screen name="Ubah Aturan" component={() => null} />
-
-      <HomeStack.Screen name="Tentang Aplikasi" component={() => null} />
+      <HomeStack.Screen name="Tentang Aplikasi" component={AboutScreen} />
       <HomeStack.Screen name="Pengaturan" component={() => null} />
     </HomeStack.Navigator>
   );

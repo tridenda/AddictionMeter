@@ -8,7 +8,7 @@ import { Text } from "../../../components/typography/text.component";
 import {
   DetailContainer,
   Highlight,
-} from "../../../components/utility/detail.styles";
+} from "../../../components/utility/containers.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
 
 export const DetailScreen = ({ navigation }) => {

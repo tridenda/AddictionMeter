@@ -9,8 +9,8 @@ import { CustomButton } from "../../../components/buttons/custom-button.componen
 import { OptionButton } from "../components/option-button.component";
 import {
   OptionContainer,
-  QuestionContianer,
-} from "../components/detection.styles";
+  QuestionContainer,
+} from "../../../components/utility/containers.styles";
 
 const options = [
   ["A. Sangat Pasti", 1],
@@ -29,7 +29,7 @@ export const DetectionScreen = ({ navigation }) => {
   return (
     <SafeArea>
       <ScrollView>
-        <QuestionContianer>
+        <QuestionContainer>
           <Text variant="title">Pertanyaan 1</Text>
           <Spacer position="top" size="sm" />
           <Text>
@@ -37,7 +37,7 @@ export const DetectionScreen = ({ navigation }) => {
             menghabiskan berpikir tentang online game atau merencanakan
             berikutnya?
           </Text>
-        </QuestionContianer>
+        </QuestionContainer>
         <OptionContainer>
           {options.map((elem, i) => {
             return (
