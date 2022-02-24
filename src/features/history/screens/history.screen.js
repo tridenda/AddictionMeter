@@ -35,15 +35,17 @@ const data = [
   },
 ];
 
-export const HistoryScreen = () => {
+export const HistoryScreen = ({ navigation }) => {
   return (
     <SafeArea>
       <ScrollView>
         <ListContainer>
           {data.map((item, i) => {
             return (
-              <Spacer position="top" size="lg">
-                <TouchableOpacity>
+              <Spacer position="top" size="lg" key={`Detail-${i}`}>
+                <TouchableOpacity
+                  onPress={() => navigation.navigate("Detil Riwayat")}
+                >
                   <HistoryList item={item} />
                 </TouchableOpacity>
               </Spacer>

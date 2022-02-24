@@ -5,6 +5,7 @@ import { MenuScreen } from "../../features/menu/screens/menu.screen";
 import { DetectionScreen } from "../../features/detection/screens/detection.screen";
 import { ResultScreen } from "../../features/detection/screens/result.screen";
 import { HistoryScreen } from "../../features/history/screens/history.screen";
+import { DetailScreen } from "../../features/history/screens/detail.screen";
 
 const HomeStack = createStackNavigator();
 
@@ -15,7 +16,9 @@ export const HomeNavigator = () => {
 
       <HomeStack.Screen name="Deteksi Kecanduan" component={DetectionScreen} />
       <HomeStack.Screen name="Hasil" component={ResultScreen} />
+
       <HomeStack.Screen name="Riwayat" component={HistoryScreen} />
+      <HomeStack.Screen name="Detil Riwayat" component={DetailScreen} />
 
       <HomeStack.Screen name="Data Gejala" component={() => null} />
       <HomeStack.Screen name="Tambah Gejala" component={() => null} />
