@@ -8,6 +8,8 @@ import { HistoryScreen } from "../../features/history/screens/history.screen";
 import { DetailScreen } from "../../features/history/screens/detail.screen";
 import { AboutScreen } from "../../features/about/screens/about.screen";
 import { SymptomScreen } from "../../features/symptoms/screens/symptoms.screen";
+import { AddSymptomScreen } from "../../features/symptoms/screens/add-symptom.screen";
+import { EditSymptomScreen } from "../../features/symptoms/screens/edit-symptom.screen";
 
 const HomeStack = createStackNavigator();
 
@@ -23,8 +25,8 @@ export const HomeNavigator = () => {
       <HomeStack.Screen name="Detil Riwayat" component={DetailScreen} />
 
       <HomeStack.Screen name="Data Gejala" component={SymptomScreen} />
-      <HomeStack.Screen name="Tambah Gejala" component={() => null} />
-      <HomeStack.Screen name="Ubah Gejala" component={() => null} />
+      <HomeStack.Screen name="Tambah Gejala" component={AddSymptomScreen} />
+      <HomeStack.Screen name="Ubah Gejala" component={EditSymptomScreen} />
 
       <HomeStack.Screen name="Tingkat Kecanduan" component={() => null} />
       <HomeStack.Screen name="Tambah Tingkat" component={() => null} />
