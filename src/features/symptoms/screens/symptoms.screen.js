@@ -1,6 +1,6 @@
 import React from "react";
-import { ScrollView } from "react-native-gesture-handler";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { ScrollView } from "react-native";
+import { TouchableOpacity } from "react-native";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import { MainContainer } from "../../../components/utility/containers.styles";
@@ -56,7 +56,7 @@ export const SymptomScreen = ({ navigation }) => {
             return (
               <Spacer position="top" size="lg" key={`SymptomButton-${i}`}>
                 <TouchableOpacity
-                  onPress={() => console.log("Go to change screen")}
+                  onPress={() => navigation.navigate("Ubah Gejala")}
                 >
                   <SymptomList symptoms={item} />
                 </TouchableOpacity>
@@ -64,7 +64,7 @@ export const SymptomScreen = ({ navigation }) => {
             );
           })}
         </MainContainer>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate("Tambah Gejala")}>
           <CustomButton title="Tambah Gejala" />
         </TouchableOpacity>
         <Spacer position="top" size="lg" />
