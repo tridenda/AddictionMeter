@@ -13,6 +13,7 @@ import { EditSymptomScreen } from "../../features/symptoms/screens/edit-symptom.
 import { LevelsScreen } from "../../features/levels/screens/levels.screen";
 import { AddLevelScreen } from "../../features/levels/screens/add-level.screen";
 import { EditLevelScreen } from "../../features/levels/screens/edit-level.screen";
+import { SettingsScreen } from "../../features/settings/screens/settings.screen";
 
 const HomeStack = createStackNavigator();
 
@@ -36,7 +37,7 @@ export const HomeNavigator = () => {
       <HomeStack.Screen name="Ubah Tingkat" component={EditLevelScreen} />
 
       <HomeStack.Screen name="Tentang Aplikasi" component={AboutScreen} />
-      <HomeStack.Screen name="Pengaturan" component={() => null} />
+      <HomeStack.Screen name="Pengaturan" component={SettingsScreen} />
     </HomeStack.Navigator>
   );
 };
