@@ -47,7 +47,7 @@ const data = [
   },
 ];
 
-export const SymptomScreen = ({ navigation }) => {
+export const SymptomsScreen = ({ navigation }) => {
   return (
     <SafeArea>
       <ScrollView>
