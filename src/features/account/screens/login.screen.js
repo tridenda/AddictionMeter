@@ -4,6 +4,7 @@ import { TouchableOpacity } from "react-native";
 import {
   AccountBackground,
   NotesContainer,
+  TitleText,
   DescriptionText,
   CustomTextInput,
 } from "../components/account.styles";
@@ -16,7 +17,8 @@ export const LoginScreen = ({ navigation }) => {
   const [password, setPassword] = useState("");
   return (
     <AccountBackground>
-      <Text variant="title">Selamat datang!</Text>
+      <TitleText variant="title">Selamat datang!</TitleText>
+      <Spacer position="top" size="md" />
       <DescriptionText>
         Masuk dengan akun kamu yang {`\n`}sudah kamu daftarkan sebelumnya
       </DescriptionText>
@@ -27,6 +29,7 @@ export const LoginScreen = ({ navigation }) => {
         value={email}
         onChangeText={(email) => setEmail(email)}
       />
+      <Spacer position="top" size="md" />
       <CustomTextInput
         label="Kata Sandi"
         mode="outlined"
