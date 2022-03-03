@@ -10,6 +10,8 @@ import {
 import { theme } from "./src/infrastucture/theme";
 import { Navigation } from "./src/infrastucture/navigation";
 
+import { AuthenticationContextProvider } from "./src/services/authentication.context";
+
 export default function App() {
   const [CaladeaLoaded] = useCaladea({
     Caladea_400Regular,
@@ -23,7 +25,9 @@ export default function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <Navigation />
+        <AuthenticationContextProvider>
+          <Navigation />
+        </AuthenticationContextProvider>
       </ThemeProvider>
       <StatusBar style="auto" />
     </>

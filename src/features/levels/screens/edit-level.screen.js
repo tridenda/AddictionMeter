@@ -9,12 +9,7 @@ import { SafeArea } from "../../../components/utility/safe-area.component";
 import { MainContainer } from "../../../components/utility/containers.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { CustomButton } from "../../../components/buttons/custom-button.component";
-
-const CustomKeyboardAvoidingView = styled(KeyboardAvoidingView).attrs({
-  behavior: Platform.OS === "ios" ? "padding" : "",
-})`
-  flex: 1;
-`;
+import { AvoidingView } from "../../../components/utility/avoiding-view.component";
 
 const CFContainer = styled.View`
   flex-direction: row;
@@ -40,7 +35,7 @@ export const EditLevelScreen = () => {
 
   return (
     <SafeArea>
-      <CustomKeyboardAvoidingView>
+      <AvoidingView>
         <MainContainer>
           <ScrollView>
             <TextInput
@@ -101,7 +96,7 @@ export const EditLevelScreen = () => {
             </Spacer>
           </ScrollView>
         </MainContainer>
-      </CustomKeyboardAvoidingView>
+      </AvoidingView>
     </SafeArea>
   );
 };

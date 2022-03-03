@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { ScrollView } from "react-native-gesture-handler";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -9,7 +9,11 @@ import {
   TitleMenu,
 } from "../components/menu.styles";
 
+import { AuthenticationContext } from "../../../services/authentication.context";
+
 export const MenuScreen = ({ navigation }) => {
+  const { onLogout } = useContext(AuthenticationContext);
+
   return (
     <SafeArea>
       <ScrollView>
@@ -40,7 +44,7 @@ export const MenuScreen = ({ navigation }) => {
             <Ionicons name="settings" size={50} color="gray" />
             <TitleMenu>Pengaturan</TitleMenu>
           </ButtonMenu>
-          <ButtonMenu>
+          <ButtonMenu onPress={() => onLogout()}>
             <Ionicons name="log-out" size={50} color="gray" />
             <TitleMenu>Keluar</TitleMenu>
           </ButtonMenu>
