@@ -9,7 +9,7 @@ import {
   TitleMenu,
 } from "../components/menu.styles";
 
-import { AuthenticationContext } from "../../../services/authentication.context";
+import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
 export const MenuScreen = ({ navigation }) => {
   const { onLogout } = useContext(AuthenticationContext);

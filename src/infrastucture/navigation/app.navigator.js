@@ -5,6 +5,8 @@ import { HomeNavigator } from "./home.navigator";
 import { HistoryNavigator } from "./history.navigator";
 import { SettingsNavigator } from "./settings.navigator";
 
+import { SymptomsContextProvider } from "../../services/symptoms/symptoms.context";
+
 const Tab = createBottomTabNavigator();
 
 const TAB_ICON = {
@@ -23,18 +25,20 @@ const createTabBarIcon = (route) => {
 
 export const AppNavigator = () => {
   return (
-    <Tab.Navigator
-      screenOptions={({ route }) => ({
-        tabBarIcon: createTabBarIcon(route),
-        tabBarActiveTintColor: "#005152",
-        tabBarInactiveTintColror: "#808080",
-        headerShown: false,
-        headerTitleAlign: "center",
-      })}
-    >
-      <Tab.Screen name="Beranda" component={HomeNavigator} />
-      <Tab.Screen name="Riwayat" component={HistoryNavigator} />
-      <Tab.Screen name="Pengaturan" component={SettingsNavigator} />
-    </Tab.Navigator>
+    <SymptomsContextProvider>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: createTabBarIcon(route),
+          tabBarActiveTintColor: "#005152",
+          tabBarInactiveTintColror: "#808080",
+          headerShown: false,
+          headerTitleAlign: "center",
+        })}
+      >
+        <Tab.Screen name="Beranda" component={HomeNavigator} />
+        <Tab.Screen name="Riwayat" component={HistoryNavigator} />
+        <Tab.Screen name="Pengaturan" component={SettingsNavigator} />
+      </Tab.Navigator>
+    </SymptomsContextProvider>
   );
 };

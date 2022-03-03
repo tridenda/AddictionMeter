@@ -27,12 +27,12 @@ const ButtonContainer = styled.View`
 `;
 
 export const SymptomList = ({ symptoms }) => {
-  const { code = "G01", symptom = "Sibuk bermain internet" } = symptoms;
+  const { code = "G01", symptomName = "Sibuk bermain internet" } = symptoms;
 
   return (
     <Container>
       <SymptomContainer>
-        <Text variant="body">{symptom}</Text>
+        <Text variant="body">{symptomName}</Text>
       </SymptomContainer>
       <TouchableOpacity onPress={() => console.log("deleted")}>
         <ButtonContainer>

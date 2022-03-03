@@ -15,7 +15,7 @@ import { CustomButton } from "../../../components/buttons/custom-button.componen
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { AvoidingView } from "../../../components/utility/avoiding-view.component";
 
-import { AuthenticationContext } from "../../../services/authentication.context";
+import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
 export const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
