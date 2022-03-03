@@ -2,6 +2,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Ionicons } from "@expo/vector-icons";
 
 import { HomeNavigator } from "./home.navigator";
+import { HistoryNavigator } from "./history.navigator";
+import { SettingsNavigator } from "./settings.navigator";
 
 const Tab = createBottomTabNavigator();
 
@@ -31,8 +33,8 @@ export const AppNavigator = () => {
       })}
     >
       <Tab.Screen name="Beranda" component={HomeNavigator} />
-      <Tab.Screen name="Riwayat" component={() => null} />
-      <Tab.Screen name="Pengaturan" component={() => null} />
+      <Tab.Screen name="Riwayat" component={HistoryNavigator} />
+      <Tab.Screen name="Pengaturan" component={SettingsNavigator} />
     </Tab.Navigator>
   );
 };

@@ -47,6 +47,13 @@ const button = (theme) => `
     font-size: ${theme.fontSizes.body};
 `;
 
+const link = (theme) => `
+    font-family: ${theme.fonts.heading};
+    font-size: ${theme.fontSizes.body};
+    line-height: 28px    
+    color: blue;
+`;
+
 const variants = {
   button,
   highlight,
@@ -56,6 +63,7 @@ const variants = {
   caption,
   error,
   hint,
+  link,
 };
 
 export const Text = styled.Text`
