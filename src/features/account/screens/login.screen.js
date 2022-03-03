@@ -60,9 +60,7 @@ export const LoginScreen = ({ navigation }) => {
             </ErrorContainer>
           </Spacer>
         )}
-        <Spacer position="top" size="lg" />
-
-        <Spacer size="large">
+        <Spacer size="lg">
           {!isLoading ? (
             <TouchableOpacity onPress={() => onLogin(email, password)}>
               <CustomButton title="Masuk" />

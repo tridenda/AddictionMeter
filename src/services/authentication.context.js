@@ -12,14 +12,15 @@ export const AuthenticationContextProvider = ({ children }) => {
 
   const onLogin = (email, password) => {
     setIsloading(true);
+
     loginRequest(email, password)
       .then((u) => {
         setUser(u);
         setIsloading(false);
       })
       .catch((e) => {
-        setIsloading(false);
         setError(e.toString());
+        setIsloading(false);
       });
   };
 
@@ -36,8 +37,8 @@ export const AuthenticationContextProvider = ({ children }) => {
         setIsloading(false);
       })
       .catch((e) => {
-        setIsloading(false);
         setError(e.toString());
+        setIsloading(false);
       });
   };
 

@@ -44,7 +44,7 @@ export const MenuScreen = ({ navigation }) => {
             <Ionicons name="settings" size={50} color="gray" />
             <TitleMenu>Pengaturan</TitleMenu>
           </ButtonMenu>
-          <ButtonMenu onPress={() => onLogout()}>
+          <ButtonMenu onPress={onLogout}>
             <Ionicons name="log-out" size={50} color="gray" />
             <TitleMenu>Keluar</TitleMenu>
           </ButtonMenu>
