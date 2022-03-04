@@ -11,12 +11,16 @@ import { Spacer } from "../../../components/spacer/spacer.component";
 import { CustomButton } from "../../../components/buttons/custom-button.component";
 import { AvoidingView } from "../../../components/utility/avoiding-view.component";
 
-export const EditSymptomScreen = () => {
-  const [code, setCode] = useState("");
-  const [symptom, setSymptom] = useState("");
-  const [certaintyFactorValue, setCertaintyFactorValue] = useState("");
-  const [description, setDescription] = useState("");
-  const [question, setQuestion] = useState("");
+export const EditSymptomScreen = ({ route }) => {
+  const { symptom } = route.params;
+
+  const [code, setCode] = useState(symptom.code);
+  const [symptomName, setSymptomName] = useState(symptom.symptomName);
+  const [certaintyFactorValue, setCertaintyFactorValue] = useState(
+    symptom.cf.toString()
+  );
+  const [description, setDescription] = useState(symptom.description);
+  const [question, setQuestion] = useState(symptom.question);
 
   return (
     <SafeArea>
@@ -34,8 +38,8 @@ export const EditSymptomScreen = () => {
             <TextInput
               label="Nama Gejala"
               mode="outlined"
-              value={symptom}
-              onChangeText={(symptom) => setSymptom(symptom)}
+              value={symptomName}
+              onChangeText={(symptomName) => setSymptomName(symptomName)}
             />
 
             <Spacer position="top" size="lg" />

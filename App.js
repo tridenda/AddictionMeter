@@ -10,7 +10,7 @@ import {
 import { theme } from "./src/infrastucture/theme";
 import { Navigation } from "./src/infrastucture/navigation";
 
-import { AuthenticationContextProvider } from "./src/services/authentication.context";
+import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
 
 export default function App() {
   const [CaladeaLoaded] = useCaladea({
