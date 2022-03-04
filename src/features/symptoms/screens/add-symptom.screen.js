@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-import { KeyboardAvoidingView, Platform } from "react-native";
 import { TextInput } from "react-native-paper";
 import { ScrollView } from "react-native";
 import { TouchableOpacity } from "react-native";

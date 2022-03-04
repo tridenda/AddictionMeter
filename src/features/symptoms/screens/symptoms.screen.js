@@ -21,9 +21,13 @@ export const SymptomsScreen = ({ navigation }) => {
             return (
               <Spacer position="top" size="lg" key={`SymptomButton-${i}`}>
                 <TouchableOpacity
-                  onPress={() => navigation.navigate("Ubah Gejala")}
+                  onPress={() =>
+                    navigation.navigate("Ubah Gejala", {
+                      symptom: item,
+                    })
+                  }
                 >
-                  <SymptomList symptoms={item} />
+                  <SymptomList symptom={item} />
                 </TouchableOpacity>
               </Spacer>
             );
