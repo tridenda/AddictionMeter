@@ -11,7 +11,8 @@ import { CustomButton } from "../../../components/buttons/custom-button.componen
 import { SymptomsContext } from "../../../services/symptoms/symptoms.context";
 
 export const SymptomsScreen = ({ navigation }) => {
-  const { symptoms, isLoading, error } = useContext(SymptomsContext);
+  const { symptoms, isLoading, error, addSymptom } =
+    useContext(SymptomsContext);
 
   return (
     <SafeArea>

@@ -1,6 +1,10 @@
 import React, { useState, createContext, useEffect } from "react";
 
-import { requestSymptoms, symptomsTransform } from "./symptoms.service";
+import {
+  requestSymptoms,
+  symptomsTransform,
+  requestAddSymptom,
+} from "./symptoms.service";
 
 export const SymptomsContext = createContext();
 
@@ -24,12 +28,20 @@ export const SymptomsContextProvider = ({ children }) => {
       });
   };
 
+  const addSymptom = (code, symptomName, cf, description, question) => {
+    setIsloading(true);
+
+    requestAddSymptom(code, symptomName,cf, description, question);
+  };
+
   useEffect(() => {
     getSymptoms();
   }, []);
 
   return (
-    <SymptomsContext.Provider value={{ symptoms, isLoading, error }}>
+    <SymptomsContext.Provider
+      value={{ symptoms, isLoading, error, addSymptom }}
+    >
       {children}
     </SymptomsContext.Provider>
   );
