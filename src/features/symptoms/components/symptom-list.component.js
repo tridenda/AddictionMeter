@@ -26,13 +26,14 @@ const ButtonContainer = styled.View`
   justify-content: center;
 `;
 
-export const SymptomList = ({ symptoms }) => {
-  const { code = "G01", symptom = "Sibuk bermain internet" } = symptoms;
+export const SymptomList = ({ symptom }) => {
+  const { code = "G01", symptomName = "Sibuk bermain internet" } = symptom;
 
   return (
     <Container>
       <SymptomContainer>
-        <Text variant="body">{symptom}</Text>
+        <Text variant="caption">{code}</Text>
+        <Text variant="body">{symptomName}</Text>
       </SymptomContainer>
       <TouchableOpacity onPress={() => console.log("deleted")}>
         <ButtonContainer>

@@ -20,7 +20,7 @@ const ItemContainer = styled(List.Section)`
   background-color: ${(props) => props.theme.colors.bg.secondary};
 `;
 
-export const SettingsScreen = () => {
+export const SettingsScreen = ({ navigation }) => {
   return (
     <SafeArea>
       <ScrollView>
@@ -43,14 +43,14 @@ export const SettingsScreen = () => {
               left={(props) => (
                 <List.Icon {...props} color="black" icon="account" />
               )}
-              onPress={() => console.log("other")}
+              onPress={() => navigation.navigate("Ubah Profil")}
             />
             <List.Item
               title="Ubah Kata Sandi"
               left={(props) => (
                 <List.Icon {...props} color="black" icon="lastpass" />
               )}
-              onPress={() => console.log("other")}
+              onPress={() => navigation.navigate("Ubah Kata Sandi")}
             />
             <List.Item
               title="Logout"

@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-import { KeyboardAvoidingView, Platform } from "react-native";
 import { TextInput } from "react-native-paper";
 import { ScrollView } from "react-native";
 import { TouchableOpacity } from "react-native";
@@ -9,12 +7,7 @@ import { SafeArea } from "../../../components/utility/safe-area.component";
 import { MainContainer } from "../../../components/utility/containers.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { CustomButton } from "../../../components/buttons/custom-button.component";
-
-const CustomKeyboardAvoidingView = styled(KeyboardAvoidingView).attrs({
-  behavior: Platform.OS === "ios" ? "padding" : "",
-})`
-  flex: 1;
-`;
+import { AvoidingView } from "../../../components/utility/avoiding-view.component";
 
 export const AddSymptomScreen = () => {
   const [code, setCode] = useState("");
@@ -25,7 +18,7 @@ export const AddSymptomScreen = () => {
 
   return (
     <SafeArea>
-      <CustomKeyboardAvoidingView>
+      <AvoidingView>
         <MainContainer>
           <ScrollView>
             <TextInput
@@ -80,7 +73,7 @@ export const AddSymptomScreen = () => {
             </Spacer>
           </ScrollView>
         </MainContainer>
-      </CustomKeyboardAvoidingView>
+      </AvoidingView>
     </SafeArea>
   );
 };
