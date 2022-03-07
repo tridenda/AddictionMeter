@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
 
 import { Text } from "../../../components/typography/text.component";
+
+import { SymptomsContext } from "../../../services/symptoms/symptoms.context";
 
 const Container = styled.View`
   border-width: 1px;
@@ -27,6 +29,7 @@ const ButtonContainer = styled.View`
 `;
 
 export const SymptomList = ({ symptom }) => {
+  const { deleteSymptom, getSymptoms } = useContext(SymptomsContext);
   const { code = "G01", symptomName = "Sibuk bermain internet" } = symptom;
 
   return (
@@ -35,7 +38,12 @@ export const SymptomList = ({ symptom }) => {
         <Text variant="caption">{code}</Text>
         <Text variant="body">{symptomName}</Text>
       </SymptomContainer>
-      <TouchableOpacity onPress={() => console.log("deleted")}>
+      <TouchableOpacity
+        onPress={() => {
+          deleteSymptom(symptom.symptomId);
+          getSymptoms();
+        }}
+      >
         <ButtonContainer>
           <Ionicons name="trash" size={45} color="gray" />
         </ButtonContainer>

@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
-import { KeyboardAvoidingView, Platform } from "react-native";
 import { TextInput } from "react-native-paper";
 import { ScrollView } from "react-native";
 import { TouchableOpacity } from "react-native";
@@ -11,16 +10,35 @@ import { Spacer } from "../../../components/spacer/spacer.component";
 import { CustomButton } from "../../../components/buttons/custom-button.component";
 import { AvoidingView } from "../../../components/utility/avoiding-view.component";
 
+import { SymptomsContext } from "../../../services/symptoms/symptoms.context";
+
+const FormContainer = styled.View`
+  flex-direction: row;
+`;
+
+const MBInput = styled(TextInput)`
+  flex: 1;
+  margin-right: 5px;
+`;
+
+const MDInput = styled(TextInput)`
+  flex: 1;
+  margin-left: 5px;
+`;
+
 export const EditSymptomScreen = ({ route }) => {
+  // retrieve data from another page using route navigation
   const { symptom } = route.params;
 
   const [code, setCode] = useState(symptom.code);
   const [symptomName, setSymptomName] = useState(symptom.symptomName);
-  const [certaintyFactorValue, setCertaintyFactorValue] = useState(
-    symptom.cf.toString()
-  );
+  const [mb, setMb] = useState(symptom.mb.toString());
+  const [md, setMd] = useState(symptom.md.toString());
+  const [cf, setCf] = useState(symptom.cf.toString());
   const [description, setDescription] = useState(symptom.description);
   const [question, setQuestion] = useState(symptom.question);
+
+  const { updateSymptom, isLoading, error } = useContext(SymptomsContext);
 
   return (
     <SafeArea>
@@ -43,13 +61,31 @@ export const EditSymptomScreen = ({ route }) => {
             />
 
             <Spacer position="top" size="lg" />
+            <FormContainer>
+              <MBInput
+                label="Nilai MB"
+                mode="outlined"
+                keyboardType="numeric"
+                value={mb}
+                onChangeText={(mb) => {
+                  setMb(mb);
+                }}
+              />
+              <MDInput
+                label="Nilai MD"
+                mode="outlined"
+                keyboardType="numeric"
+                value={md}
+                onChangeText={(md) => setMd(md)}
+              />
+            </FormContainer>
+
+            <Spacer position="top" size="lg" />
             <TextInput
               label="Nilai CF"
               mode="outlined"
-              value={certaintyFactorValue}
-              onChangeText={(certaintyFactorValue) =>
-                setCertaintyFactorValue(certaintyFactorValue)
-              }
+              value={cf}
+              onChangeText={(cf) => setCf(cf)}
             />
 
             <Spacer position="top" size="lg" />
@@ -73,7 +109,27 @@ export const EditSymptomScreen = ({ route }) => {
             />
 
             <Spacer position="top" size="lg">
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  updateSymptom({
+                    symptomId: symptom.symptomId,
+                    code,
+                    symptomName,
+                    mb,
+                    md,
+                    cf,
+                    description,
+                    question,
+                  });
+                  setCode("");
+                  setSymptomName("");
+                  setMb("");
+                  setMd("");
+                  setCf("");
+                  setDescription("");
+                  setQuestion("");
+                }}
+              >
                 <CustomButton title="Ubah" />
               </TouchableOpacity>
             </Spacer>

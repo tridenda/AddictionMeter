@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useFocusEffect } from "@react-navigation/native";
 import { ScrollView } from "react-native";
 import { TouchableOpacity } from "react-native";
 
@@ -11,7 +12,14 @@ import { CustomButton } from "../../../components/buttons/custom-button.componen
 import { SymptomsContext } from "../../../services/symptoms/symptoms.context";
 
 export const SymptomsScreen = ({ navigation }) => {
-  const { symptoms, isLoading, error } = useContext(SymptomsContext);
+  const { symptoms, isLoading, error, getSymptoms } =
+    useContext(SymptomsContext);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      getSymptoms();
+    }, [])
+  );
 
   return (
     <SafeArea>
