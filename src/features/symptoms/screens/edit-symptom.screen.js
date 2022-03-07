@@ -84,6 +84,7 @@ export const EditSymptomScreen = ({ route }) => {
             <TextInput
               label="Nilai CF"
               mode="outlined"
+              keyboardType="numeric"
               value={cf}
               onChangeText={(cf) => setCf(cf)}
             />
