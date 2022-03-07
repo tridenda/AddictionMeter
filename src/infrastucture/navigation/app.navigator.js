@@ -29,7 +29,7 @@ export const AppNavigator = () => {
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: createTabBarIcon(route),
-          tabBarActiveTintColor: "#005152",
+          tabBarActiveTintColor: "#505050",
           tabBarInactiveTintColror: "#808080",
           headerShown: false,
           headerTitleAlign: "center",
