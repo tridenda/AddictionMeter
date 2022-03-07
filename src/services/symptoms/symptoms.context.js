@@ -4,6 +4,8 @@ import {
   requestSymptoms,
   symptomsTransform,
   requestAddSymptom,
+  requestUpdateSymptom,
+  requestDeleteSymptom,
 } from "./symptoms.service";
 
 export const SymptomsContext = createContext();
@@ -28,10 +30,45 @@ export const SymptomsContextProvider = ({ children }) => {
       });
   };
 
-  const addSymptom = (code, symptomName, cf, description, question) => {
+  const addSymptom = (symptomObj) => {
+    setIsloading(true);
+    // transform the value to float
+    symptomObj.mb = parseFloat(symptomObj.mb);
+    symptomObj.md = parseFloat(symptomObj.md);
+    symptomObj.cf = parseFloat(symptomObj.cf);
+
+    requestAddSymptom(symptomObj)
+      .then(() => setIsloading(false))
+      .catch((e) => {
+        setError(e.toString());
+        setIsloading(false);
+      });
+  };
+
+  const updateSymptom = (symptomObj) => {
+    setIsloading(true);
+    // transform the value to float
+    symptomObj.mb = parseFloat(symptomObj.mb);
+    symptomObj.md = parseFloat(symptomObj.md);
+    symptomObj.cf = parseFloat(symptomObj.cf);
+
+    requestUpdateSymptom(symptomObj)
+      .then(() => setIsloading(false))
+      .catch((e) => {
+        setError(e.toString());
+        setIsloading(false);
+      });
+  };
+
+  const deleteSymptom = (symptomId) => {
     setIsloading(true);
 
-    requestAddSymptom(code, symptomName,cf, description, question);
+    requestDeleteSymptom(symptomId)
+      .then(() => setIsloading(false))
+      .catch((e) => {
+        setError(e.toString());
+        setIsloading(false);
+      });
   };
 
   useEffect(() => {
@@ -40,7 +77,15 @@ export const SymptomsContextProvider = ({ children }) => {
 
   return (
     <SymptomsContext.Provider
-      value={{ symptoms, isLoading, error, addSymptom }}
+      value={{
+        symptoms,
+        isLoading,
+        error,
+        addSymptom,
+        getSymptoms,
+        updateSymptom,
+        deleteSymptom,
+      }}
     >
       {children}
     </SymptomsContext.Provider>

@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import styled from "styled-components";
 import { TextInput } from "react-native-paper";
 import { ScrollView } from "react-native";
 import { TouchableOpacity } from "react-native";
@@ -33,7 +34,8 @@ export const AddSymptomScreen = () => {
   const [cf, setCf] = useState("");
   const [description, setDescription] = useState("");
   const [question, setQuestion] = useState("");
-  const { addSymptom } = useContext(SymptomsContext);
+
+  const { addSymptom, isLoading, error } = useContext(SymptomsContext);
 
   return (
     <SafeArea>
@@ -58,14 +60,18 @@ export const AddSymptomScreen = () => {
             <Spacer position="top" size="lg" />
             <FormContainer>
               <MBInput
-                label="Minimal CF"
+                label="Nilai MB"
                 mode="outlined"
+                keyboardType="numeric"
                 value={mb}
-                onChangeText={(mb) => setMb(mb)}
+                onChangeText={(mb) => {
+                  setMb(mb);
+                }}
               />
               <MDInput
-                label="Maksimal CF"
+                label="Nilai MD"
                 mode="outlined"
+                keyboardType="numeric"
                 value={md}
                 onChangeText={(md) => setMd(md)}
               />
@@ -75,6 +81,7 @@ export const AddSymptomScreen = () => {
             <TextInput
               label="Nilai CF"
               mode="outlined"
+              keyboardType="numeric"
               value={cf}
               onChangeText={(cf) => setCf(cf)}
             />
@@ -102,9 +109,19 @@ export const AddSymptomScreen = () => {
             <Spacer position="top" size="lg">
               <TouchableOpacity
                 onPress={() => {
-                  addSymptom(code, symptomName, cf, description, question);
+                  addSymptom({
+                    code,
+                    symptomName,
+                    mb,
+                    md,
+                    cf,
+                    description,
+                    question,
+                  });
                   setCode("");
                   setSymptomName("");
+                  setMb("");
+                  setMd("");
                   setCf("");
                   setDescription("");
                   setQuestion("");
