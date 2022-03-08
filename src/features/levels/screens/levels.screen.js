@@ -1,6 +1,6 @@
-import React from "react";
-import { ScrollView } from "react-native";
-import { TouchableOpacity } from "react-native";
+import React, { useContext } from "react";
+import { ScrollView, TouchableOpacity } from "react-native";
+import { useFocusEffect } from "@react-navigation/native";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import { MainContainer } from "../../../components/utility/containers.styles";
@@ -8,39 +8,28 @@ import { LevelList } from "../components/level-list.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { CustomButton } from "../../../components/buttons/custom-button.component";
 
-const data = [
-  {
-    code: "T01",
-    level: "Ringan",
-    CFMinimum: 0,
-    CFMaximum: 0.39,
-  },
-  {
-    code: "T02",
-    level: "Sedang",
-    CFMinimum: 0.4,
-    CFMaximum: 0.79,
-  },
-  {
-    code: "T03",
-    level: "Berat",
-    CFMinimum: 0.8,
-    CFMaximum: 1,
-  },
-];
+import { LevelsContext } from "../../../services/levels/levels.context";
 
 export const LevelsScreen = ({ navigation }) => {
+  const { levels, getLevels, isLoading, error } = useContext(LevelsContext);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      getLevels();
+    }, [])
+  );
+
   return (
     <SafeArea>
       <ScrollView>
         <MainContainer>
-          {data.map((item, i) => {
+          {levels.map((item, i) => {
             return (
               <Spacer position="top" size="lg" key={`LevelButton-${i}`}>
                 <TouchableOpacity
                   onPress={() => navigation.navigate("Ubah Tingkat")}
                 >
-                  <LevelList levels={item} />
+                  <LevelList level={item} />
                 </TouchableOpacity>
               </Spacer>
             );

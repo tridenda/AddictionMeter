@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
-import { KeyboardAvoidingView, Platform } from "react-native";
 import { TextInput } from "react-native-paper";
 import { ScrollView } from "react-native";
 import { TouchableOpacity } from "react-native";
@@ -10,6 +9,8 @@ import { MainContainer } from "../../../components/utility/containers.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { CustomButton } from "../../../components/buttons/custom-button.component";
 import { AvoidingView } from "../../../components/utility/avoiding-view.component";
+
+import { LevelsContext } from "../../../services/levels/levels.context";
 
 const CFContainer = styled.View`
   flex-direction: row;
@@ -27,11 +28,13 @@ const CFMaximumInput = styled(TextInput)`
 
 export const AddLevelScreen = () => {
   const [code, setCode] = useState("");
-  const [level, setLevel] = useState("");
-  const [CFMinimum, setCFMinimum] = useState("");
-  const [CFMaximum, setCFMaximum] = useState("");
+  const [levelName, setLevelName] = useState("");
+  const [cfMin, setCfMin] = useState("");
+  const [cfMax, setCfMax] = useState("");
   const [description, setDescription] = useState("");
   const [solution, setSolution] = useState("");
+
+  const { addLevel, isLoading, error } = useContext(LevelsContext);
 
   return (
     <SafeArea>
@@ -49,8 +52,8 @@ export const AddLevelScreen = () => {
             <TextInput
               label="Tingkat"
               mode="outlined"
-              value={level}
-              onChangeText={(level) => setLevel(level)}
+              value={levelName}
+              onChangeText={(levelName) => setLevelName(levelName)}
             />
 
             <Spacer position="top" size="lg" />
@@ -58,14 +61,16 @@ export const AddLevelScreen = () => {
               <CFMinimumInput
                 label="Minimal CF"
                 mode="outlined"
-                value={CFMinimum}
-                onChangeText={(CFMinimum) => setCFMinimum(CFMinimum)}
+                keyboardType="numeric"
+                value={cfMin}
+                onChangeText={(cfMin) => setCfMin(cfMin)}
               />
               <CFMaximumInput
                 label="Maksimal CF"
                 mode="outlined"
-                value={CFMaximum}
-                onChangeText={(CFMaximum) => setCFMaximum(CFMaximum)}
+                keyboardType="numeric"
+                value={cfMax}
+                onChangeText={(cfMax) => setCfMax(cfMax)}
               />
             </CFContainer>
 
@@ -90,7 +95,16 @@ export const AddLevelScreen = () => {
             />
 
             <Spacer position="top" size="lg">
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  addLevel({ code, levelName, cfMin, cfMax, solution });
+                  setCode("");
+                  setLevelName("");
+                  setCfMin("");
+                  setCfMax("");
+                  setSolution("");
+                }}
+              >
                 <CustomButton title="Tambah" />
               </TouchableOpacity>
             </Spacer>

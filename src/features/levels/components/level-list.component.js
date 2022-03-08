@@ -27,19 +27,19 @@ const ButtonContainer = styled.View`
   justify-content: center;
 `;
 
-export const LevelList = ({ levels }) => {
+export const LevelList = ({ level }) => {
   const {
     code = "T01",
-    level = "Ringan",
+    levelName = "Ringan",
     CFMinimum = 0,
     CFMaximum = 0.39,
-  } = levels;
+  } = level;
 
   return (
     <Container>
       <LevelContainer>
         <Text variant="body">{code}</Text>
-        <Text variant="title">{level}</Text>
+        <Text variant="title">{levelName}</Text>
         <Spacer position="top" size="sm" />
         <Text variant="caption">{`Nilai CF dari ${CFMinimum} s/d ${CFMaximum}`}</Text>
       </LevelContainer>
