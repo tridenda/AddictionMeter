@@ -11,7 +11,6 @@ import {
 import camelize from "camelize";
 
 import { db } from "../../../firebase.config";
-import { async } from "@firebase/util";
 
 export const requestSymptoms = async () => {
   // 1. get the reference and all the data
