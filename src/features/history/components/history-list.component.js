@@ -24,20 +24,16 @@ const ContainerLevel = styled.View`
   margin-top: ${(props) => props.theme.sizes[1]};
 `;
 
-export const HistoryList = ({ item = {} }) => {
-  const {
-    id = "T00",
-    date = "Selasa, 2 September 1997",
-    level = "Ringan",
-  } = item;
+export const HistoryList = ({ result }) => {
+  const { name, convertedDate } = result;
 
   return (
     <Container>
       <ContainerDate>
-        <Text variant="caption">{date}</Text>
+        <Text variant="caption">{convertedDate}</Text>
       </ContainerDate>
       <ContainerLevel>
-        <Text variant="title">{level}</Text>
+        <Text variant="title">{name}</Text>
       </ContainerLevel>
     </Container>
   );
