@@ -35,12 +35,12 @@ export const requestAddLevel = async (levelObj) => {
 
 export const requestUpdateLevel = async (levelObj) => {
   // 1. get levelsRef using doc()
-  const levelsRef = doc(db, "levels", levelObj.levelId);
+  const levelRef = await doc(db, "levels", levelObj.levelId);
   // 2. delete id value from the object
   delete levelObj.levelId;
 
   // 3. push the object and update the data to firebase
-  await updateDoc(levelsRef, levelObj);
+  await updateDoc(levelRef, levelObj);
 };
 
 export const requestDeleteLevel = async (levelId) => {

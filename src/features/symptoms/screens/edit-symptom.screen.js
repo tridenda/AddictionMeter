@@ -26,7 +26,7 @@ const MDInput = styled(TextInput)`
   margin-left: 5px;
 `;
 
-export const EditSymptomScreen = ({ route }) => {
+export const EditSymptomScreen = ({ navigation, route }) => {
   // retrieve data from another page using route navigation
   const { symptom } = route.params;
 
@@ -122,13 +122,7 @@ export const EditSymptomScreen = ({ route }) => {
                     description,
                     question,
                   });
-                  setCode("");
-                  setSymptomName("");
-                  setMb("");
-                  setMd("");
-                  setCf("");
-                  setDescription("");
-                  setQuestion("");
+                  navigation.navigate("Data Gejala");
                 }}
               >
                 <CustomButton title="Ubah" />

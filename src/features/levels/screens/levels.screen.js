@@ -27,7 +27,11 @@ export const LevelsScreen = ({ navigation }) => {
             return (
               <Spacer position="top" size="lg" key={`LevelButton-${i}`}>
                 <TouchableOpacity
-                  onPress={() => navigation.navigate("Ubah Tingkat")}
+                  onPress={() =>
+                    navigation.navigate("Ubah Tingkat", {
+                      level: item,
+                    })
+                  }
                 >
                   <LevelList level={item} />
                 </TouchableOpacity>

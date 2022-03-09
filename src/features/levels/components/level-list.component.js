@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
 
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
+
+import { LevelsContext } from "../../../services/levels/levels.context";
 
 const Container = styled.View`
   border-width: 1px;
@@ -29,11 +31,13 @@ const ButtonContainer = styled.View`
 
 export const LevelList = ({ level }) => {
   const {
+    levelId,
     code = "T01",
     levelName = "Ringan",
-    CFMinimum = 0,
-    CFMaximum = 0.39,
+    cfMin = 0,
+    cfMax = 0.39,
   } = level;
+  const { deleteLevel, getLevels } = useContext(LevelsContext);
 
   return (
     <Container>
@@ -41,9 +45,14 @@ export const LevelList = ({ level }) => {
         <Text variant="body">{code}</Text>
         <Text variant="title">{levelName}</Text>
         <Spacer position="top" size="sm" />
-        <Text variant="caption">{`Nilai CF dari ${CFMinimum} s/d ${CFMaximum}`}</Text>
+        <Text variant="caption">{`Nilai CF dari ${cfMin} s/d ${cfMax}`}</Text>
       </LevelContainer>
-      <TouchableOpacity onPress={() => console.log("deleted")}>
+      <TouchableOpacity
+        onPress={() => {
+          deleteLevel(levelId);
+          getLevels();
+        }}
+      >
         <ButtonContainer>
           <Ionicons name="trash" size={45} color="gray" />
         </ButtonContainer>

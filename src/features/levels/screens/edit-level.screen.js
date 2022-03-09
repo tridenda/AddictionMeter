@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
-import { KeyboardAvoidingView, Platform } from "react-native";
 import { TextInput } from "react-native-paper";
-import { ScrollView } from "react-native";
-import { TouchableOpacity } from "react-native";
+import { ScrollView, TouchableOpacity } from "react-native";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import { MainContainer } from "../../../components/utility/containers.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { CustomButton } from "../../../components/buttons/custom-button.component";
 import { AvoidingView } from "../../../components/utility/avoiding-view.component";
+
+import { LevelsContext } from "../../../services/levels/levels.context";
 
 const CFContainer = styled.View`
   flex-direction: row;
@@ -25,13 +25,18 @@ const CFMaximumInput = styled(TextInput)`
   margin-left: 5px;
 `;
 
-export const EditLevelScreen = () => {
-  const [code, setCode] = useState("");
-  const [level, setLevel] = useState("");
-  const [CFMinimum, setCFMinimum] = useState("");
-  const [CFMaximum, setCFMaximum] = useState("");
-  const [description, setDescription] = useState("");
-  const [solution, setSolution] = useState("");
+export const EditLevelScreen = ({ navigation, route }) => {
+  // retrieve data level from the previous page
+  const { level } = route.params;
+
+  const [code, setCode] = useState(level.code);
+  const [levelName, setLevelName] = useState(level.levelName);
+  const [cfMin, setCfMin] = useState(level.cfMin.toString());
+  const [cfMax, setCfMax] = useState(level.cfMax.toString());
+  const [description, setDescription] = useState(level.description);
+  const [solution, setSolution] = useState(level.solution);
+
+  const { updateLevel, isLoading, error } = useContext(LevelsContext);
 
   return (
     <SafeArea>
@@ -49,8 +54,8 @@ export const EditLevelScreen = () => {
             <TextInput
               label="Tingkat"
               mode="outlined"
-              value={level}
-              onChangeText={(level) => setLevel(level)}
+              value={levelName}
+              onChangeText={(levelName) => setLevelName(levelName)}
             />
 
             <Spacer position="top" size="lg" />
@@ -58,14 +63,16 @@ export const EditLevelScreen = () => {
               <CFMinimumInput
                 label="Minimal CF"
                 mode="outlined"
-                value={CFMinimum}
-                onChangeText={(CFMinimum) => setCFMinimum(CFMinimum)}
+                keyboardType="numeric"
+                value={cfMin}
+                onChangeText={(cfMin) => setCfMin(cfMin)}
               />
               <CFMaximumInput
                 label="Maksimal CF"
                 mode="outlined"
-                value={CFMaximum}
-                onChangeText={(CFMaximum) => setCFMaximum(CFMaximum)}
+                keyboardType="numeric"
+                value={cfMax}
+                onChangeText={(cfMax) => setCfMax(cfMax)}
               />
             </CFContainer>
 
@@ -90,7 +97,20 @@ export const EditLevelScreen = () => {
             />
 
             <Spacer position="top" size="lg">
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  updateLevel({
+                    levelId: level.levelId,
+                    code,
+                    levelName,
+                    cfMin,
+                    cfMax,
+                    description,
+                    solution,
+                  });
+                  navigation.navigate("Tingkat Kecanduan");
+                }}
+              >
                 <CustomButton title="Ubah" />
               </TouchableOpacity>
             </Spacer>

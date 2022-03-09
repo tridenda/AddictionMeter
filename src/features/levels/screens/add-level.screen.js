@@ -97,7 +97,14 @@ export const AddLevelScreen = () => {
             <Spacer position="top" size="lg">
               <TouchableOpacity
                 onPress={() => {
-                  addLevel({ code, levelName, cfMin, cfMax, solution });
+                  addLevel({
+                    code,
+                    levelName,
+                    cfMin,
+                    cfMax,
+                    description,
+                    solution,
+                  });
                   setCode("");
                   setLevelName("");
                   setCfMin("");
