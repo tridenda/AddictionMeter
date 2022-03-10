@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { TouchableOpacity, ScrollView } from "react-native";
+import { useFocusEffect } from "@react-navigation/native";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import { HistoryList } from "../components/history-list.component";
@@ -10,7 +11,13 @@ import { MainContainer } from "../../../components/utility/containers.styles";
 import { ResultsContext } from "../../../services/history/history.context";
 
 export const HistoryScreen = ({ navigation }) => {
-  const { results, isLoading, error } = useContext(ResultsContext);
+  const { results, getResults, isLoading, error } = useContext(ResultsContext);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      getResults();
+    }, [])
+  );
 
   return (
     <SafeArea>
@@ -20,7 +27,11 @@ export const HistoryScreen = ({ navigation }) => {
             return (
               <Spacer position="top" size="lg" key={`Detail-${i}`}>
                 <TouchableOpacity
-                  onPress={() => navigation.navigate("Detil Riwayat")}
+                  onPress={() =>
+                    navigation.navigate("Detil Riwayat", {
+                      result: item,
+                    })
+                  }
                 >
                   <HistoryList result={item} />
                 </TouchableOpacity>

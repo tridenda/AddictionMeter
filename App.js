@@ -21,6 +21,7 @@ if (Platform.OS == "android") {
 }
 
 export default function App() {
+  // use fonts from expo google fonts
   const [CaladeaLoaded] = useCaladea({
     Caladea_400Regular,
     Caladea_700Bold,

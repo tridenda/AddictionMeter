@@ -25,7 +25,7 @@ const ContainerLevel = styled.View`
 `;
 
 export const HistoryList = ({ result }) => {
-  const { name, convertedDate } = result;
+  const { levelName, convertedDate } = result;
 
   return (
     <Container>
@@ -33,7 +33,7 @@ export const HistoryList = ({ result }) => {
         <Text variant="caption">{convertedDate}</Text>
       </ContainerDate>
       <ContainerLevel>
-        <Text variant="title">{name}</Text>
+        <Text variant="title">{levelName}</Text>
       </ContainerLevel>
     </Container>
   );
