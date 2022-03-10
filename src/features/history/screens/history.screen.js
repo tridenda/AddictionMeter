@@ -11,7 +11,8 @@ import { MainContainer } from "../../../components/utility/containers.styles";
 import { ResultsContext } from "../../../services/history/history.context";
 
 export const HistoryScreen = ({ navigation }) => {
-  const { results, getResults, isLoading, error } = useContext(ResultsContext);
+  const { results, getResults, deleteAllHistory, isLoading, error } =
+    useContext(ResultsContext);
 
   useFocusEffect(
     React.useCallback(() => {
@@ -39,7 +40,7 @@ export const HistoryScreen = ({ navigation }) => {
             );
           })}
         </MainContainer>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={deleteAllHistory}>
           <CustomButton title="HAPUS SEMUA" />
         </TouchableOpacity>
         <Spacer position="bottom" size="lg" />

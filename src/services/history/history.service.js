@@ -1,6 +1,13 @@
 import camelize from "camelize";
 import "intl";
-import { collection, getDocs, orderBy, query } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  orderBy,
+  query,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 
 import { db } from "../../../firebase.config";
 
@@ -18,6 +25,11 @@ export const requestResults = async () => {
       resultId: doc.id,
     };
   });
+};
+
+export const requestDeleteResult = async (resultId) => {
+  // delete level data from firebase document
+  await deleteDoc(doc(db, "results", resultId));
 };
 
 export const resultsTransform = (results = []) => {

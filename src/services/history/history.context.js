@@ -1,6 +1,11 @@
-import React, { useState, createContext, useEffect } from "react";
+import React, { useState, createContext, useEffect, useContext } from "react";
 
-import { requestResults, resultsTransform } from "./history.service";
+import {
+  requestDeleteResult,
+  requestResults,
+  resultsTransform,
+} from "./history.service";
+import { AuthenticationContext } from "../authentication/authentication.context";
 
 export const ResultsContext = createContext();
 
@@ -9,19 +14,32 @@ export const ResultsContextProvider = ({ children }) => {
   const [isLoading, setIsloading] = useState(false);
   const [error, setError] = useState([]);
 
+  const { user } = useContext(AuthenticationContext);
+
   const getResults = () => {
     setIsloading(true);
 
     requestResults()
       .then(resultsTransform)
       .then((res) => {
-        setResults(res);
+        // filter only retrieve current user data
+        const customRes = res.filter((r) => r.email == user.email);
+
+        setResults(customRes);
         setIsloading(false);
       })
       .catch((e) => {
         setError(e.toString());
         setIsloading(false);
       });
+  };
+
+  const deleteAllHistory = () => {
+    results.map((item) => {
+      requestDeleteResult(item.resultId);
+    });
+
+    getResults();
   };
 
   useEffect(() => {
@@ -35,6 +53,7 @@ export const ResultsContextProvider = ({ children }) => {
         isLoading,
         error,
         getResults,
+        deleteAllHistory,
       }}
     >
       {children}
