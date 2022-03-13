@@ -2,6 +2,7 @@ import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
+  updatePassword,
 } from "firebase/auth";
 
 import { app } from "../../../firebase.config";
@@ -14,4 +15,8 @@ export const loginRequest = (email, password) => {
 
 export const registerRequest = (email, password) => {
   return createUserWithEmailAndPassword(auth, email, password);
+};
+
+export const updatePasswordRequest = (user, newPassword) => {
+  return updatePassword(user, newPassword);
 };
