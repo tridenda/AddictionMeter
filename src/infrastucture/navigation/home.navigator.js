@@ -14,7 +14,6 @@ import { LevelsScreen } from "../../features/levels/screens/levels.screen";
 import { AddLevelScreen } from "../../features/levels/screens/add-level.screen";
 import { EditLevelScreen } from "../../features/levels/screens/edit-level.screen";
 import { SettingsScreen } from "../../features/settings/screens/settings.screen";
-import { EditAccountScreen } from "../../features/settings/screens/edit-account.screen";
 import { EditPasswordScreen } from "../../features/settings/screens/edit-password.screen";
 
 const HomeStack = createStackNavigator();
@@ -40,7 +39,6 @@ export const HomeNavigator = () => {
 
       <HomeStack.Screen name="Tentang Aplikasi" component={AboutScreen} />
       <HomeStack.Screen name="Pengaturan" component={SettingsScreen} />
-      <HomeStack.Screen name="Ubah Profil" component={EditAccountScreen} />
       <HomeStack.Screen name="Ubah Kata Sandi" component={EditPasswordScreen} />
     </HomeStack.Navigator>
   );

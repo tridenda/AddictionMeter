@@ -9,7 +9,6 @@ import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
-import { UsersContext } from "../../../services/users/users.context";
 
 const AvatarContainer = styled.View`
   flex: 1;
@@ -24,7 +23,7 @@ const ItemContainer = styled(List.Section)`
 `;
 
 export const SettingsScreen = ({ navigation }) => {
-  const { onLogout } = useContext(AuthenticationContext);
+  const { onLogout, user } = useContext(AuthenticationContext);
 
   return (
     <SafeArea>
@@ -37,21 +36,12 @@ export const SettingsScreen = ({ navigation }) => {
               source={require("../../../../assets/ava.png")}
             />
             <Spacer position="top" size="lg" />
-            <Text variant="title">Tri Denda</Text>
-            <Text>5 Jam/Hari</Text>
-            <Text variant="caption">{`Bermain sejak November 2022`}</Text>
+            <Text variant="title">{user.email}</Text>
           </AvatarContainer>
 
           <ItemContainer>
             <List.Item
-              title="Ubah Profil"
-              left={(props) => (
-                <List.Icon {...props} color="black" icon="account" />
-              )}
-              onPress={() => navigation.navigate("Ubah Profil")}
-            />
-            <List.Item
-              title="Ubah Kata Sandi"
+              title="Ubah kata sandi"
               left={(props) => (
                 <List.Icon {...props} color="black" icon="lastpass" />
               )}

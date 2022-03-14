@@ -82,7 +82,7 @@ export const EditPasswordScreen = ({ navigation }) => {
               </Spacer>
             )}
 
-            <Spacer position="top" size="lg">
+            <Spacer position="top" size="sm">
               <TouchableOpacity
                 onPress={() => {
                   onUpdatePassword(
