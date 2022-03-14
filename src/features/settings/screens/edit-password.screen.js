@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import { KeyboardAvoidingView, Platform } from "react-native";
 import { TextInput } from "react-native-paper";
 import { ScrollView } from "react-native";
 import { TouchableOpacity } from "react-native";
+import { useFocusEffect } from "@react-navigation/native";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import { MainContainer } from "../../../components/utility/containers.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { CustomButton } from "../../../components/buttons/custom-button.component";
+import { Text } from "../../../components/typography/text.component";
+
+import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
 const CustomKeyboardAvoidingView = styled(KeyboardAvoidingView).attrs({
   behavior: Platform.OS === "ios" ? "padding" : "",
@@ -16,10 +20,20 @@ const CustomKeyboardAvoidingView = styled(KeyboardAvoidingView).attrs({
   flex: 1;
 `;
 
-export const EditPasswordScreen = () => {
-  const [oldPassword, setOldPassword] = useState("");
+export const EditPasswordScreen = ({ navigation }) => {
+  const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
-  const [newPasswordConfirmation, setNewPasswordConfirmation] = useState("");
+  const [repeatedNewPassword, setRepeatedNewPassword] = useState("");
+
+  const { onUpdatePassword, onLoading, error, setError } = useContext(
+    AuthenticationContext
+  );
+
+  useFocusEffect(
+    React.useCallback(() => {
+      setError([]);
+    }, [])
+  );
 
   return (
     <SafeArea>
@@ -29,14 +43,22 @@ export const EditPasswordScreen = () => {
             <TextInput
               label="Kata Sandi Lama"
               mode="outlined"
-              value={oldPassword}
-              onChangeText={(oldPassword) => setOldPassword(oldPassword)}
+              secureTextEntry
+              autoCapitalize="none"
+              secure
+              value={currentPassword}
+              onChangeText={(currentPassword) =>
+                setCurrentPassword(currentPassword)
+              }
             />
 
             <Spacer position="top" size="lg" />
             <TextInput
               label="Kata Sandi Baru"
               mode="outlined"
+              secureTextEntry
+              autoCapitalize="none"
+              secure
               value={newPassword}
               onChangeText={(newPassword) => setNewPassword(newPassword)}
             />
@@ -45,14 +67,32 @@ export const EditPasswordScreen = () => {
             <TextInput
               label="Konfirmasi Kata Sandi"
               mode="outlined"
-              value={newPasswordConfirmation}
-              onChangeText={(newPasswordConfirmation) =>
-                setNewPasswordConfirmation(newPasswordConfirmation)
+              secureTextEntry
+              autoCapitalize="none"
+              secure
+              value={repeatedNewPassword}
+              onChangeText={(repeatedNewPassword) =>
+                setRepeatedNewPassword(repeatedNewPassword)
               }
             />
 
-            <Spacer position="top" size="lg">
-              <TouchableOpacity>
+            {error && (
+              <Spacer position="top" size="lg">
+                <Text variant="error">{error}</Text>
+              </Spacer>
+            )}
+
+            <Spacer position="top" size="sm">
+              <TouchableOpacity
+                onPress={() => {
+                  onUpdatePassword(
+                    currentPassword,
+                    newPassword,
+                    repeatedNewPassword,
+                    navigation
+                  );
+                }}
+              >
                 <CustomButton title="Ubah" />
               </TouchableOpacity>
             </Spacer>
