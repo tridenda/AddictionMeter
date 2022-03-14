@@ -25,13 +25,6 @@ const ItemContainer = styled(List.Section)`
 
 export const SettingsScreen = ({ navigation }) => {
   const { onLogout } = useContext(AuthenticationContext);
-  const { users } = useContext(UsersContext);
-
-  const {
-    fullName = "Nama Pengguna",
-    intensity = "2 jam/hari",
-    convertedStartIn = "1 Januari",
-  } = users[0];
 
   return (
     <SafeArea>
@@ -44,9 +37,9 @@ export const SettingsScreen = ({ navigation }) => {
               source={require("../../../../assets/ava.png")}
             />
             <Spacer position="top" size="lg" />
-            <Text variant="title">{fullName}</Text>
-            <Text>{intensity}</Text>
-            <Text variant="caption">{`Bermain sejak ${convertedStartIn}`}</Text>
+            <Text variant="title">Tri Denda</Text>
+            <Text>5 Jam/Hari</Text>
+            <Text variant="caption">{`Bermain sejak November 2022`}</Text>
           </AvatarContainer>
 
           <ItemContainer>

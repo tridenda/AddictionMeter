@@ -1,37 +1,36 @@
-import React, { useState } from "react";
-import styled from "styled-components";
-import { KeyboardAvoidingView, Platform } from "react-native";
+import React, { useState, useContext } from "react";
 import { TextInput } from "react-native-paper";
-import { ScrollView } from "react-native";
-import { TouchableOpacity } from "react-native";
+import { ScrollView, TouchableOpacity } from "react-native";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import { MainContainer } from "../../../components/utility/containers.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { CustomButton } from "../../../components/buttons/custom-button.component";
+import { AvoidingView } from "../../../components/utility/avoiding-view.component";
 
-const CustomKeyboardAvoidingView = styled(KeyboardAvoidingView).attrs({
-  behavior: Platform.OS === "ios" ? "padding" : "",
-})`
-  flex: 1;
-`;
+import { AuthenticationContext } from "../../../services/authentication/authentication.context";
+import { UsersContext } from "../../../services/users/users.context";
 
-export const EditAccountScreen = () => {
-  const [name, setName] = useState("");
-  const [intensity, setIntensity] = useState("");
-  const [playingSince, setPlayingSince] = useState("");
-  const [numberPhone, setNumberPhone] = useState("");
+export const EditAccountScreen = ({ route }) => {
+  const { userInfo } = route.params;
+  const [fullName, setFullName] = useState(userInfo.fullName);
+  const [intensity, setIntensity] = useState(userInfo.intensity);
+  const [startIn, setStartIn] = useState(userInfo.startIn);
+  const [phone, setPhone] = useState(userInfo.phone);
+
+  const { user } = useContext(AuthenticationContext);
+  const { addUser, editUser } = useContext(UsersContext);
 
   return (
     <SafeArea>
-      <CustomKeyboardAvoidingView>
+      <AvoidingView>
         <MainContainer>
           <ScrollView>
             <TextInput
               label="Nama Lengkap"
               mode="outlined"
-              value={name}
-              onChangeText={(name) => setName(name)}
+              value={fullName}
+              onChangeText={(fullName) => setFullName(fullName)}
             />
 
             <Spacer position="top" size="lg" />
@@ -46,26 +45,47 @@ export const EditAccountScreen = () => {
             <TextInput
               label="Bermain sejak"
               mode="outlined"
-              value={playingSince}
-              onChangeText={(playingSince) => setPlayingSince(playingSince)}
+              value={startIn}
+              onChangeText={(startIn) => setStartIn(startIn)}
             />
 
             <Spacer position="top" size="lg" />
             <TextInput
               label="Nomor HP"
               mode="outlined"
-              value={numberPhone}
-              onChangeText={(numberPhone) => setNumberPhone(numberPhone)}
+              value={phone}
+              keyboardType="numeric"
+              onChangeText={(phone) => setPhone(phone)}
             />
 
             <Spacer position="top" size="lg">
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  if (userInfo.email.length == 0) {
+                    addUser({
+                      email: user.email,
+                      fullName,
+                      intensity,
+                      phone,
+                      startIn,
+                    });
+                  } else {
+                    editUser({
+                      email: user.email,
+                      fullName,
+                      intensity,
+                      phone,
+                      startIn,
+                    });
+                  }
+                }}
+              >
                 <CustomButton title="Ubah" />
               </TouchableOpacity>
             </Spacer>
           </ScrollView>
         </MainContainer>
-      </CustomKeyboardAvoidingView>
+      </AvoidingView>
     </SafeArea>
   );
 };

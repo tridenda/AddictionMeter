@@ -3,9 +3,12 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   updatePassword,
+  updateProfile,
+  addDoc,
+  collection,
 } from "firebase/auth";
 
-import { app } from "../../../firebase.config";
+import { app, db } from "../../../firebase.config";
 
 export const auth = getAuth(app);
 
@@ -19,4 +22,12 @@ export const registerRequest = (email, password) => {
 
 export const updatePasswordRequest = (user, newPassword) => {
   return updatePassword(user, newPassword);
+};
+
+// Not used, just in case want to use this function
+export const updateProfileRequest = () => {
+  return updateProfile(auth.currentUser, {
+    displayName: "Jane Q. User",
+    photoURL: "https://example.com/jane-q-user/profile.jpg",
+  });
 };

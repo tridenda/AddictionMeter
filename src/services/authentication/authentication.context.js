@@ -35,12 +35,12 @@ export const AuthenticationContextProvider = ({ children }) => {
   };
 
   const onRegister = (email, password, repeatedPassword) => {
-    setIsloading(true);
     if (password !== repeatedPassword) {
       setError("Error: Password do not match");
       return;
     }
 
+    setIsloading(true);
     registerRequest(email, password)
       .then((u) => {
         setUser(u);
