@@ -12,7 +12,7 @@ import {
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
 export const MenuScreen = ({ navigation }) => {
-  const { onLogout } = useContext(AuthenticationContext);
+  const { onLogout, user } = useContext(AuthenticationContext);
 
   return (
     <SafeArea>
@@ -26,16 +26,20 @@ export const MenuScreen = ({ navigation }) => {
             <Ionicons name="calendar" size={50} color="gray" />
             <TitleMenu>Riwayat Kecanduan</TitleMenu>
           </ButtonMenu>
-
-          <ButtonMenu onPress={() => navigation.navigate("Data Gejala")}>
-            <Ionicons name="albums" size={50} color="gray" />
-            <TitleMenu>Data Gejala</TitleMenu>
-          </ButtonMenu>
-          <ButtonMenu onPress={() => navigation.navigate("Tingkat Kecanduan")}>
-            <Ionicons name="analytics" size={50} color="gray" />
-            <TitleMenu>Tingkat Kecanduan</TitleMenu>
-          </ButtonMenu>
-
+          {user.email == "admin@email.com" ? (
+            <>
+              <ButtonMenu onPress={() => navigation.navigate("Data Gejala")}>
+                <Ionicons name="albums" size={50} color="gray" />
+                <TitleMenu>Data Gejala</TitleMenu>
+              </ButtonMenu>
+              <ButtonMenu
+                onPress={() => navigation.navigate("Tingkat Kecanduan")}
+              >
+                <Ionicons name="analytics" size={50} color="gray" />
+                <TitleMenu>Tingkat Kecanduan</TitleMenu>
+              </ButtonMenu>
+            </>
+          ) : null}
           <ButtonMenu onPress={() => navigation.navigate("Tentang Aplikasi")}>
             <Ionicons name="alert-circle" size={50} color="gray" />
             <TitleMenu>Tentang</TitleMenu>
