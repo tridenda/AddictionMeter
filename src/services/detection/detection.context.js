@@ -100,7 +100,6 @@ export const DetectionContextProvider = ({ children }) => {
             answers,
           })
             .then((res) => {
-              console.log("result");
               // 6. reset the answers and the order then navigate to "hasil"
               setIsLoading(false);
               setQuestionOrder(0);
