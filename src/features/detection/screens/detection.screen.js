@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { ScrollView } from "react-native-gesture-handler";
 import { TouchableOpacity } from "react-native";
 
@@ -12,39 +12,34 @@ import {
   QuestionContainer,
 } from "../../../components/utility/containers.styles";
 
-const options = [
-  ["A. Sangat Pasti", 1],
-  ["B. Pasti", 0.9],
-  ["C. Hampir Pasti", 0.8],
-  ["D. Kemungkinan Besar", 0.7],
-  ["E. Mungkin", 0.6],
-  ["F. Tidak Tahu", 0.5],
-  ["G. Mungkin Tidak", 0.4],
-  ["H. Kemungkinan Besar Tidak", 0.3],
-  ["I. Hampir Pasti Tidak", 0.2],
-  ["J. Pasti Tidak", 0.1],
-];
+import { DetectionContext } from "../../../services/detection/detection.context";
 
 export const DetectionScreen = ({ navigation }) => {
+  const { options, symptoms, questionOrder, onSubmit, onBack } =
+    useContext(DetectionContext);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (ref.current) {
+      ref.current.scrollTo({ y: 0, animated: true });
+    }
+  }, [questionOrder]);
+
   return (
     <SafeArea>
-      <ScrollView>
+      <ScrollView ref={ref}>
         <QuestionContainer>
-          <Text variant="title">Pertanyaan 1</Text>
+          <Text variant="title">{`Pertanyaan ${questionOrder + 1}`}</Text>
           <Spacer position="top" size="sm" />
-          <Text>
-            Jika anda tidak sedang memainkan online game apakah anda
-            menghabiskan berpikir tentang online game atau merencanakan
-            berikutnya?
-          </Text>
+          <Text>{symptoms[questionOrder].question}</Text>
         </QuestionContainer>
+
         <OptionContainer>
           {options.map((elem, i) => {
             return (
               <TouchableOpacity
                 key={`OptionButton-${i}`}
-                onPress={() => navigation.navigate("Hasil")}
-                value={elem[1]}
+                onPress={() => onSubmit(elem[1], navigation)}
               >
                 <OptionButton>{elem[0]}</OptionButton>
               </TouchableOpacity>
@@ -52,9 +47,15 @@ export const DetectionScreen = ({ navigation }) => {
           })}
         </OptionContainer>
         <Spacer position="top" size="lg" />
-        <TouchableOpacity>
-          <CustomButton title="KEMBALI" />
-        </TouchableOpacity>
+
+        {questionOrder > 0 ? (
+          <>
+            <TouchableOpacity onPress={() => onBack(navigation)}>
+              <CustomButton title="KEMBALI" />
+            </TouchableOpacity>
+            <Spacer position="bottom" size="lg" />
+          </>
+        ) : null}
       </ScrollView>
     </SafeArea>
   );

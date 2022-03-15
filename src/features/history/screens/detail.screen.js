@@ -12,9 +12,9 @@ import {
 import { Spacer } from "../../../components/spacer/spacer.component";
 
 export const DetailScreen = ({ navigation, route }) => {
-  const result = route.params;
+  const { result } = route.params;
   // split the solution text for creating a new paragraph
-  const solution = result.result.solution.split(`\\n`);
+  const solution = result.solution.split(`\\n`);
 
   return (
     <SafeArea>
@@ -26,14 +26,15 @@ export const DetailScreen = ({ navigation, route }) => {
           </Text>
           <Spacer position="top" size="lg">
             <Highlight>
-              <Text variant="highlight">{result.result.levelName}</Text>
+              <Text variant="highlight">{result.levelName}</Text>
             </Highlight>
           </Spacer>
+
           <Spacer position="top" size="lg" />
           <Text variant="title">Saran:</Text>
           {solution.map((item, i) => {
             return (
-              <Spacer key={`solution-${i}`} position="top" size="lg">
+              <Spacer key={`solution-${i}`} position="top" size="sm">
                 <Text>{item}</Text>
               </Spacer>
             );

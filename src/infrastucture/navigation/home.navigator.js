@@ -16,6 +16,8 @@ import { EditLevelScreen } from "../../features/levels/screens/edit-level.screen
 import { SettingsScreen } from "../../features/settings/screens/settings.screen";
 import { EditPasswordScreen } from "../../features/settings/screens/edit-password.screen";
 
+import { AuthenticationContext } from "../../services/authentication/authentication.context";
+
 const HomeStack = createStackNavigator();
 
 export const HomeNavigator = () => {
