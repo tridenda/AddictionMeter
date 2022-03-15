@@ -11,7 +11,11 @@ import {
 } from "../../../components/utility/containers.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
 
-export const ResultScreen = ({ navigation }) => {
+export const ResultScreen = ({ navigation, route }) => {
+  const { result } = route.params;
+  // split the solution text for creating a new paragraph
+  const solution = result.solution.split(`\\n`);
+
   return (
     <SafeArea>
       <ScrollView>
@@ -22,24 +26,19 @@ export const ResultScreen = ({ navigation }) => {
           </Text>
           <Spacer position="top" size="lg">
             <Highlight>
-              <Text variant="highlight">Sedang</Text>
+              <Text variant="highlight">{result.levelName}</Text>
             </Highlight>
           </Spacer>
+
           <Spacer position="top" size="lg" />
           <Text variant="title">Saran:</Text>
-          <Spacer position="top" size="sm">
-            <Text>
-              Lakukan kegiatan atau aktivitas positif, bangun komunikasi dengan
-              sesama, dan menjaga kesehatan fisik serta pikirian.
-            </Text>
-          </Spacer>
-          <Spacer position="top" size="sm">
-            <Text>
-              Terkahir sadari bahwa bermain online game akan berdampak hilangnya
-              relasi dengan orang lain, dan sebaiknya lanjut untuk konsultasi
-              dengan psikolog/psikiater.
-            </Text>
-          </Spacer>
+          {solution.map((item, i) => {
+            return (
+              <Spacer key={`solution-${i}`} position="top" size="sm">
+                <Text>{item}</Text>
+              </Spacer>
+            );
+          })}
         </DetailContainer>
         <Spacer position="top" size="lg" />
         <TouchableOpacity onPress={() => navigation.navigate("Beranda")}>

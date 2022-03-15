@@ -8,6 +8,7 @@ import { SettingsNavigator } from "./settings.navigator";
 import { SymptomsContextProvider } from "../../services/symptoms/symptoms.context";
 import { LevelsContextProvider } from "../../services/levels/levels.context";
 import { ResultsContextProvider } from "../../services/history/history.context";
+import { DetectionContextProvider } from "../../services/detection/detection.context";
 
 const Tab = createBottomTabNavigator();
 
@@ -27,24 +28,26 @@ const createTabBarIcon = (route) => {
 
 export const AppNavigator = () => {
   return (
-    <ResultsContextProvider>
-      <LevelsContextProvider>
-        <SymptomsContextProvider>
-          <Tab.Navigator
-            screenOptions={({ route }) => ({
-              tabBarIcon: createTabBarIcon(route),
-              tabBarActiveTintColor: "#505050",
-              tabBarInactiveTintColror: "#808080",
-              headerShown: false,
-              headerTitleAlign: "center",
-            })}
-          >
-            <Tab.Screen name="Beranda" component={HomeNavigator} />
-            <Tab.Screen name="Riwayat" component={HistoryNavigator} />
-            <Tab.Screen name="Pengaturan" component={SettingsNavigator} />
-          </Tab.Navigator>
-        </SymptomsContextProvider>
-      </LevelsContextProvider>
-    </ResultsContextProvider>
+    <DetectionContextProvider>
+      <ResultsContextProvider>
+        <LevelsContextProvider>
+          <SymptomsContextProvider>
+            <Tab.Navigator
+              screenOptions={({ route }) => ({
+                tabBarIcon: createTabBarIcon(route),
+                tabBarActiveTintColor: "#505050",
+                tabBarInactiveTintColror: "#808080",
+                headerShown: false,
+                headerTitleAlign: "center",
+              })}
+            >
+              <Tab.Screen name="Beranda" component={HomeNavigator} />
+              <Tab.Screen name="Riwayat" component={HistoryNavigator} />
+              <Tab.Screen name="Pengaturan" component={SettingsNavigator} />
+            </Tab.Navigator>
+          </SymptomsContextProvider>
+        </LevelsContextProvider>
+      </ResultsContextProvider>
+    </DetectionContextProvider>
   );
 };
