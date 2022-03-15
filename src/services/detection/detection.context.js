@@ -16,7 +16,6 @@ export const DetectionContextProvider = ({ children }) => {
   const [symptoms, setSymptoms] = useState(null);
   const [questionOrder, setQuestionOrder] = useState(0);
   const [answers, setAnswers] = useState([]);
-  const [level, setLevel] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState([]);
   const options = [
@@ -81,8 +80,10 @@ export const DetectionContextProvider = ({ children }) => {
 
       // 3. Get the level and solution by using CF combine
       getLevel(cfCombine)
-        .then((lvl) => {
-          setLevel(lvl[0]);
+        .then((level) => {
+          return level[0];
+        })
+        .then((level) => {
           // 4. collect all questions from symptoms into an array
           const questions = symptoms.map((symptom) => {
             return symptom.question;
@@ -99,6 +100,7 @@ export const DetectionContextProvider = ({ children }) => {
             answers,
           })
             .then((res) => {
+              console.log("result");
               // 6. reset the answers and the order then navigate to "hasil"
               setIsLoading(false);
               setQuestionOrder(0);
@@ -106,8 +108,6 @@ export const DetectionContextProvider = ({ children }) => {
               navigation.navigate("Hasil", {
                 result: res,
               });
-              setLevel(null);
-              setResult(null);
             })
             .catch((e) => {
               setError(e.toString());
