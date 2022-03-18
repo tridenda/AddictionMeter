@@ -50,7 +50,7 @@ export const SettingsScreen = ({ navigation }) => {
             <Text variant="title">{userInfo.fullName}</Text>
             <Text variant="caption">{userInfo.email}</Text>
             <Text>{`Intensitas bermain ${userInfo.intensity} Jam/Hari`}</Text>
-            <Text>{`Rutin bermain sejak ${userInfo.convertedStartIn}`}</Text>
+            <Text>{`Rutin bermain sejak ${userInfo.startIn}`}</Text>
           </AvatarContainer>
 
           <ItemContainer>
@@ -59,19 +59,19 @@ export const SettingsScreen = ({ navigation }) => {
               left={(props) => (
                 <List.Icon {...props} color="black" icon="account" />
               )}
-              onPress={onGetUser}
+              onPress={() => navigation.navigate("Ubah Profil", { userInfo })}
             />
             <List.Item
               title="Ubah kata sandi"
               left={(props) => (
-                <List.Icon {...props} color="black" icon="lastpass" />
+                <List.Icon {...props} color="black" icon="shield-key" />
               )}
               onPress={() => navigation.navigate("Ubah Kata Sandi")}
             />
             <List.Item
               title="Logout"
               left={(props) => (
-                <List.Icon {...props} color="black" icon="door" />
+                <List.Icon {...props} color="black" icon="logout" />
               )}
               onPress={onLogout}
             />

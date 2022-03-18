@@ -12,7 +12,7 @@ import { AuthenticationContext } from "../../services/authentication/authenticat
 export const DetectionContext = createContext();
 
 export const DetectionContextProvider = ({ children }) => {
-  const { user } = useContext(AuthenticationContext);
+  const { user, userInfo } = useContext(AuthenticationContext);
   const [symptoms, setSymptoms] = useState(null);
   const [questionOrder, setQuestionOrder] = useState(0);
   const [answers, setAnswers] = useState([]);
@@ -107,6 +107,12 @@ export const DetectionContextProvider = ({ children }) => {
               navigation.navigate("Hasil", {
                 result: res,
               });
+              console.log(userInfo.unUpdated);
+              if (userInfo.unUpdated) {
+                setTimeout(() => {
+                  navigation.navigate("Ubah Profil", { userInfo });
+                }, 20000);
+              }
             })
             .catch((e) => {
               setError(e.toString());

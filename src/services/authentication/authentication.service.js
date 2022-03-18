@@ -5,9 +5,10 @@ import {
   createUserWithEmailAndPassword,
   updatePassword,
 } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
 import { app, db } from "../../../firebase.config";
+import { async } from "@firebase/util";
 
 export const auth = getAuth(app);
 
@@ -28,28 +29,20 @@ export const userRequest = async (user) => {
   const userSnap = await getDoc(userRef);
 
   if (userSnap.exists()) {
-    const startIn = userSnap.data().startIn.toDate();
-    const convertedStartIn = startIn.toLocaleString("id-ID", {
-      year: "numeric",
-      month: "long",
-    });
-
-    return {
-      ...userSnap.data(),
-      convertedStartIn,
-    };
+    return userSnap.data();
   } else {
     return {
       email: user.email,
       fullName: "<Belum Terisi>",
       intensity: "0",
       phone: "0123456789",
-      startIn: {
-        nanoseconds: 0,
-        seconds: 164787313320,
-      },
+      startIn: "Januari 1997",
       userLevel: "",
-      convertedStartIn: "<belum terisi>",
+      unUpdated: true,
     };
   }
+};
+
+export const addUserRequest = async (userObj, userId) => {
+  await setDoc(doc(db, "users", userId), userObj);
 };

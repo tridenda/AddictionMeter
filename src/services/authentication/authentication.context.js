@@ -7,6 +7,7 @@ import {
 } from "firebase/auth";
 
 import {
+  addUserRequest,
   auth,
   loginRequest,
   registerRequest,
@@ -123,6 +124,18 @@ export const AuthenticationContextProvider = ({ children }) => {
       .catch(() => {});
   };
 
+  const onAddUser = (userObj, navigation) => {
+    if (userInfo.userLevel == "admin") {
+      userObj.userLevel = userInfo.userLevel;
+    }
+
+    addUserRequest(userObj, user.uid)
+      .then(() => {
+        navigation.navigate("Pengaturan");
+      })
+      .catch(() => {});
+  };
+
   onAuthStateChanged(auth, (usr) => {
     if (usr) {
       setUser(usr);
@@ -146,6 +159,7 @@ export const AuthenticationContextProvider = ({ children }) => {
         onUpdatePassword,
         setError,
         onGetUser,
+        onAddUser,
       }}
     >
       {children}
