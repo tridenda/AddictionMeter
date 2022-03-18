@@ -6,9 +6,9 @@ import { SafeArea } from "../../../components/utility/safe-area.component";
 import { MainContainer } from "../../../components/utility/containers.styles";
 import { LevelList } from "../components/level-list.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
-import { CustomButton } from "../../../components/buttons/custom-button.component";
 
 import { LevelsContext } from "../../../services/levels/levels.context";
+import { PrimaryButton } from "../../../styles/buttons.styles";
 
 export const LevelsScreen = ({ navigation }) => {
   const { levels, getLevels, isLoading, error } = useContext(LevelsContext);
@@ -39,9 +39,9 @@ export const LevelsScreen = ({ navigation }) => {
             );
           })}
         </MainContainer>
-        <TouchableOpacity onPress={() => navigation.navigate("Tambah Tingkat")}>
-          <CustomButton title="Tambah Tingkat" />
-        </TouchableOpacity>
+        <PrimaryButton onPress={() => navigation.navigate("Tambah Tingkat")}>
+          Tambah
+        </PrimaryButton>
         <Spacer position="top" size="lg" />
       </ScrollView>
     </SafeArea>
