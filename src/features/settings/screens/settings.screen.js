@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { ScrollView } from "react-native";
 import { Avatar, List } from "react-native-paper";
 import styled from "styled-components";
+import { useFocusEffect } from "@react-navigation/native";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import { MainContainer } from "../../../components/utility/containers.styles";
@@ -23,7 +24,17 @@ const ItemContainer = styled(List.Section)`
 `;
 
 export const SettingsScreen = ({ navigation }) => {
-  const { onLogout, user } = useContext(AuthenticationContext);
+  const { onLogout, onGetUser, userInfo } = useContext(AuthenticationContext);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      onGetUser();
+    }, [])
+  );
+
+  if (!userInfo) {
+    return null;
+  }
 
   return (
     <SafeArea>
@@ -36,10 +47,20 @@ export const SettingsScreen = ({ navigation }) => {
               source={require("../../../../assets/ava.png")}
             />
             <Spacer position="top" size="lg" />
-            <Text variant="title">{user.email}</Text>
+            <Text variant="title">{userInfo.fullName}</Text>
+            <Text variant="caption">{userInfo.email}</Text>
+            <Text>{`Intensitas bermain ${userInfo.intensity} Jam/Hari`}</Text>
+            <Text>{`Rutin bermain sejak ${userInfo.convertedStartIn}`}</Text>
           </AvatarContainer>
 
           <ItemContainer>
+            <List.Item
+              title="Ubah profil"
+              left={(props) => (
+                <List.Icon {...props} color="black" icon="account" />
+              )}
+              onPress={onGetUser}
+            />
             <List.Item
               title="Ubah kata sandi"
               left={(props) => (
