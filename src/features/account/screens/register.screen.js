@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { TouchableOpacity } from "react-native";
+import { ActivityIndicator, Colors } from "react-native-paper";
 
 import {
   AccountBackground,
@@ -10,9 +11,9 @@ import {
   ErrorContainer,
 } from "../components/account.styles";
 import { Text } from "../../../components/typography/text.component";
-import { CustomButton } from "../../../components/buttons/custom-button.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { AvoidingView } from "../../../components/utility/avoiding-view.component";
+import { PrimaryButton } from "../../../styles/buttons.styles";
 
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
@@ -65,18 +66,21 @@ export const RegisterScreen = ({ navigation }) => {
           }
         />
         {error && (
-          <Spacer size="lg">
+          <Spacer size="sm">
             <ErrorContainer>
               <Text variant="error">{error}</Text>
             </ErrorContainer>
           </Spacer>
         )}
-        <Spacer position="top" size="lg" />
-        <TouchableOpacity
-          onPress={() => onRegister(email, password, repeatedPassword)}
-        >
-          <CustomButton title="Daftar" />
-        </TouchableOpacity>
+        {!isLoading ? (
+          <PrimaryButton
+            onPress={() => onRegister(email, password, repeatedPassword)}
+          >
+            Daftar
+          </PrimaryButton>
+        ) : (
+          <ActivityIndicator animating={true} color={Colors.blue300} />
+        )}
         <Spacer position="top" size="lg" />
         <NotesContainer>
           <Text>Sudah memiliki akun? </Text>

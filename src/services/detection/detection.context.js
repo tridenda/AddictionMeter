@@ -12,11 +12,10 @@ import { AuthenticationContext } from "../../services/authentication/authenticat
 export const DetectionContext = createContext();
 
 export const DetectionContextProvider = ({ children }) => {
-  const { user } = useContext(AuthenticationContext);
+  const { user, userInfo } = useContext(AuthenticationContext);
   const [symptoms, setSymptoms] = useState(null);
   const [questionOrder, setQuestionOrder] = useState(0);
   const [answers, setAnswers] = useState([]);
-  const [level, setLevel] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState([]);
   const options = [
@@ -81,8 +80,10 @@ export const DetectionContextProvider = ({ children }) => {
 
       // 3. Get the level and solution by using CF combine
       getLevel(cfCombine)
-        .then((lvl) => {
-          setLevel(lvl[0]);
+        .then((level) => {
+          return level[0];
+        })
+        .then((level) => {
           // 4. collect all questions from symptoms into an array
           const questions = symptoms.map((symptom) => {
             return symptom.question;
@@ -106,8 +107,12 @@ export const DetectionContextProvider = ({ children }) => {
               navigation.navigate("Hasil", {
                 result: res,
               });
-              setLevel(null);
-              setResult(null);
+              console.log(userInfo.unUpdated);
+              if (userInfo.unUpdated) {
+                setTimeout(() => {
+                  navigation.navigate("Ubah Profil", { userInfo });
+                }, 20000);
+              }
             })
             .catch((e) => {
               setError(e.toString());

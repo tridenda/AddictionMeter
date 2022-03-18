@@ -11,9 +11,9 @@ import {
   ErrorContainer,
 } from "../components/account.styles";
 import { Text } from "../../../components/typography/text.component";
-import { CustomButton } from "../../../components/buttons/custom-button.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { AvoidingView } from "../../../components/utility/avoiding-view.component";
+import { PrimaryButton } from "../../../styles/buttons.styles";
 
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
@@ -62,9 +62,9 @@ export const LoginScreen = ({ navigation }) => {
         )}
         <Spacer size="lg">
           {!isLoading ? (
-            <TouchableOpacity onPress={() => onLogin(email, password)}>
-              <CustomButton title="Masuk" />
-            </TouchableOpacity>
+            <PrimaryButton onPress={() => onLogin(email, password)}>
+              Masuk
+            </PrimaryButton>
           ) : (
             <ActivityIndicator animating={true} color={Colors.blue300} />
           )}

@@ -12,7 +12,6 @@ import {
 import { Spacer } from "../../../components/spacer/spacer.component";
 
 export const DetailScreen = ({ navigation, route }) => {
-  const { result } = route.params;
   // split the solution text for creating a new paragraph
   const solution = result.solution.split(`\\n`);
 

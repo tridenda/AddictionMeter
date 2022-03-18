@@ -1,4 +1,4 @@
-import React, { useState, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 import {
   onAuthStateChanged,
   signOut,
@@ -7,10 +7,12 @@ import {
 } from "firebase/auth";
 
 import {
+  addUserRequest,
   auth,
   loginRequest,
   registerRequest,
   updatePasswordRequest,
+  userRequest,
 } from "./authentication.service";
 
 export const AuthenticationContext = createContext();
@@ -18,6 +20,7 @@ export const AuthenticationContext = createContext();
 export const AuthenticationContextProvider = ({ children }) => {
   const [isLoading, setIsloading] = useState(false);
   const [user, setUser] = useState(null);
+  const [userInfo, setUserInfo] = useState(null);
   const [error, setError] = useState([]);
 
   const onLogin = (email, password) => {
@@ -56,6 +59,7 @@ export const AuthenticationContextProvider = ({ children }) => {
     setUser(null);
     signOut(auth);
     setError([]);
+    setUserInfo(null);
   };
 
   const reauthenticate = (currentPassword) => {
@@ -112,6 +116,26 @@ export const AuthenticationContextProvider = ({ children }) => {
     }
   };
 
+  const onGetUser = () => {
+    userRequest(user)
+      .then((usr) => {
+        setUserInfo(usr);
+      })
+      .catch(() => {});
+  };
+
+  const onAddUser = (userObj, navigation) => {
+    if (userInfo.userLevel == "admin") {
+      userObj.userLevel = userInfo.userLevel;
+    }
+
+    addUserRequest(userObj, user.uid)
+      .then(() => {
+        navigation.navigate("Pengaturan");
+      })
+      .catch(() => {});
+  };
+
   onAuthStateChanged(auth, (usr) => {
     if (usr) {
       setUser(usr);
@@ -126,6 +150,7 @@ export const AuthenticationContextProvider = ({ children }) => {
       value={{
         isAuthenticated: !!user,
         user,
+        userInfo,
         isLoading,
         error,
         onLogin,
@@ -133,6 +158,8 @@ export const AuthenticationContextProvider = ({ children }) => {
         onLogout,
         onUpdatePassword,
         setError,
+        onGetUser,
+        onAddUser,
       }}
     >
       {children}

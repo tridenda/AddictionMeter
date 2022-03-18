@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { ScrollView } from "react-native-gesture-handler";
 import { Ionicons } from "@expo/vector-icons";
+import { useFocusEffect } from "@react-navigation/native";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import {
@@ -12,7 +13,17 @@ import {
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
 export const MenuScreen = ({ navigation }) => {
-  const { onLogout, user } = useContext(AuthenticationContext);
+  const { onLogout, onGetUser, userInfo } = useContext(AuthenticationContext);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      onGetUser();
+    }, [])
+  );
+
+  if (!userInfo) {
+    return null;
+  }
 
   return (
     <SafeArea>
@@ -26,7 +37,7 @@ export const MenuScreen = ({ navigation }) => {
             <Ionicons name="calendar" size={50} color="gray" />
             <TitleMenu>Riwayat Kecanduan</TitleMenu>
           </ButtonMenu>
-          {user.email == "admin@email.com" ? (
+          {userInfo.userLevel == "admin" ? (
             <>
               <ButtonMenu onPress={() => navigation.navigate("Data Gejala")}>
                 <Ionicons name="albums" size={50} color="gray" />

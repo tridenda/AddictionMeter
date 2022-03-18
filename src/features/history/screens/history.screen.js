@@ -7,8 +7,10 @@ import { HistoryList } from "../components/history-list.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { CustomButton } from "../../../components/buttons/custom-button.component";
 import { MainContainer } from "../../../components/utility/containers.styles";
+import { Text } from "../../../components/typography/text.component";
 
 import { ResultsContext } from "../../../services/history/history.context";
+import { EmptyContainer } from "../components/history.styles";
 
 export const HistoryScreen = ({ navigation }) => {
   const { results, getResults, deleteAllHistory, isLoading, error } =
@@ -40,9 +42,15 @@ export const HistoryScreen = ({ navigation }) => {
             );
           })}
         </MainContainer>
-        <TouchableOpacity onPress={deleteAllHistory}>
-          <CustomButton title="HAPUS SEMUA" />
-        </TouchableOpacity>
+        {results.length > 0 ? (
+          <TouchableOpacity onPress={deleteAllHistory}>
+            <CustomButton title="HAPUS SEMUA" />
+          </TouchableOpacity>
+        ) : (
+          <EmptyContainer>
+            <Text>Tidak ada riwayat</Text>
+          </EmptyContainer>
+        )}
         <Spacer position="bottom" size="lg" />
       </ScrollView>
     </SafeArea>

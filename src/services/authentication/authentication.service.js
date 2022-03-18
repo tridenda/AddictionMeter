@@ -1,12 +1,14 @@
+import "intl";
 import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   updatePassword,
-  updateProfile,
 } from "firebase/auth";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 
 import { app, db } from "../../../firebase.config";
+import { async } from "@firebase/util";
 
 export const auth = getAuth(app);
 
@@ -22,7 +24,25 @@ export const updatePasswordRequest = (user, newPassword) => {
   return updatePassword(user, newPassword);
 };
 
-// Not used, just in case want to use this function
-export const updateProfileRequest = (userObj) => {
-  return updateProfile(auth.currentUser, userObj);
+export const userRequest = async (user) => {
+  const userRef = doc(db, "users", user.uid);
+  const userSnap = await getDoc(userRef);
+
+  if (userSnap.exists()) {
+    return userSnap.data();
+  } else {
+    return {
+      email: user.email,
+      fullName: "<Belum Terisi>",
+      intensity: "0",
+      phone: "0123456789",
+      startIn: "Januari 1997",
+      userLevel: "",
+      unUpdated: true,
+    };
+  }
+};
+
+export const addUserRequest = async (userObj, userId) => {
+  await setDoc(doc(db, "users", userId), userObj);
 };
