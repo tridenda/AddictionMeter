@@ -1,14 +1,13 @@
 import React, { useState, useContext } from "react";
 import { TextInput } from "react-native-paper";
 import { ScrollView } from "react-native";
-import { TouchableOpacity } from "react-native";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import { MainContainer } from "../../../components/utility/containers.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
-import { CustomButton } from "../../../components/buttons/custom-button.component";
 import { AvoidingView } from "../../../components/utility/avoiding-view.component";
 import { Text } from "../../../components/typography/text.component";
+import { PrimaryButton } from "../../../styles/buttons.styles";
 
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
@@ -87,7 +86,7 @@ export const EditProfileScreen = ({ route, navigation }) => {
             />
 
             <Spacer position="top" size="lg">
-              <TouchableOpacity
+              <PrimaryButton
                 onPress={() =>
                   onAddUser(
                     { email, fullName, intensity, phone, startIn },
@@ -95,8 +94,8 @@ export const EditProfileScreen = ({ route, navigation }) => {
                   )
                 }
               >
-                <CustomButton title="Perbarui" />
-              </TouchableOpacity>
+                Perbarui
+              </PrimaryButton>
             </Spacer>
           </ScrollView>
         </MainContainer>

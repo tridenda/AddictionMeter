@@ -5,12 +5,13 @@ import { TouchableOpacity } from "react-native";
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { Text } from "../../../components/typography/text.component";
-import { CustomButton } from "../../../components/buttons/custom-button.component";
 import { OptionButton } from "../components/option-button.component";
 import {
   OptionContainer,
   QuestionContainer,
 } from "../../../components/utility/containers.styles";
+
+import { PrimaryButton } from "../../../styles/buttons.styles";
 
 import { DetectionContext } from "../../../services/detection/detection.context";
 
@@ -50,9 +51,9 @@ export const DetectionScreen = ({ navigation }) => {
 
         {questionOrder > 0 ? (
           <>
-            <TouchableOpacity onPress={() => onBack(navigation)}>
-              <CustomButton title="KEMBALI" />
-            </TouchableOpacity>
+            <PrimaryButton onPress={() => onBack(navigation)}>
+              Kembali
+            </PrimaryButton>
             <Spacer position="bottom" size="lg" />
           </>
         ) : null}

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { ScrollView } from "react-native";
 import { Avatar, List } from "react-native-paper";
 import styled from "styled-components";

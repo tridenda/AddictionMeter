@@ -1,13 +1,13 @@
 import React, { useState, useContext } from "react";
 import styled from "styled-components";
 import { TextInput } from "react-native-paper";
-import { ScrollView, TouchableOpacity } from "react-native";
+import { ScrollView } from "react-native";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import { MainContainer } from "../../../components/utility/containers.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
-import { CustomButton } from "../../../components/buttons/custom-button.component";
 import { AvoidingView } from "../../../components/utility/avoiding-view.component";
+import { PrimaryButton } from "../../../styles/buttons.styles";
 
 import { LevelsContext } from "../../../services/levels/levels.context";
 
@@ -97,7 +97,7 @@ export const EditLevelScreen = ({ navigation, route }) => {
             />
 
             <Spacer position="top" size="lg">
-              <TouchableOpacity
+              <PrimaryButton
                 onPress={() => {
                   updateLevel({
                     levelId: level.levelId,
@@ -111,8 +111,8 @@ export const EditLevelScreen = ({ navigation, route }) => {
                   navigation.navigate("Tingkat Kecanduan");
                 }}
               >
-                <CustomButton title="Ubah" />
-              </TouchableOpacity>
+                Ubah
+              </PrimaryButton>
             </Spacer>
           </ScrollView>
         </MainContainer>
