@@ -1,17 +1,14 @@
 import React from "react";
-import { TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
-import { CustomButton } from "../../../components/buttons/custom-button.component";
 import { Text } from "../../../components/typography/text.component";
-import {
-  DetailContainer,
-  Highlight,
-} from "../../../components/utility/containers.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
+import { PrimaryButton } from "../../../styles/buttons.styles";
+import { DetailContainer, Highlight } from "../../../styles/containers.styles";
 
 export const DetailScreen = ({ navigation, route }) => {
+  const { result } = route.params;
   // split the solution text for creating a new paragraph
   const solution = result.solution.split(`\\n`);
 
@@ -40,9 +37,9 @@ export const DetailScreen = ({ navigation, route }) => {
           })}
         </DetailContainer>
         <Spacer position="top" size="lg" />
-        <TouchableOpacity onPress={() => navigation.navigate("Beranda")}>
-          <CustomButton title="KEMBALI KE BERANDA" />
-        </TouchableOpacity>
+        <PrimaryButton onPress={() => navigation.navigate("Beranda")}>
+          Kembali Ke Beranda
+        </PrimaryButton>
         <Spacer position="top" size="lg" />
       </ScrollView>
     </SafeArea>

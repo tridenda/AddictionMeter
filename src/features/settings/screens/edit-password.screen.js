@@ -1,16 +1,14 @@
 import React, { useState, useContext } from "react";
 import styled from "styled-components";
-import { KeyboardAvoidingView, Platform } from "react-native";
+import { KeyboardAvoidingView, Platform, ScrollView } from "react-native";
 import { TextInput } from "react-native-paper";
-import { ScrollView } from "react-native";
-import { TouchableOpacity } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
-import { MainContainer } from "../../../components/utility/containers.styles";
+import { MainContainer } from "../../../styles/containers.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
-import { CustomButton } from "../../../components/buttons/custom-button.component";
 import { Text } from "../../../components/typography/text.component";
+import { PrimaryButton } from "../../../styles/buttons.styles";
 
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
@@ -25,7 +23,7 @@ export const EditPasswordScreen = ({ navigation }) => {
   const [newPassword, setNewPassword] = useState("");
   const [repeatedNewPassword, setRepeatedNewPassword] = useState("");
 
-  const { onUpdatePassword, onLoading, error, setError } = useContext(
+  const { onUpdatePassword, error, setError } = useContext(
     AuthenticationContext
   );
 
@@ -83,7 +81,7 @@ export const EditPasswordScreen = ({ navigation }) => {
             )}
 
             <Spacer position="top" size="sm">
-              <TouchableOpacity
+              <PrimaryButton
                 onPress={() => {
                   onUpdatePassword(
                     currentPassword,
@@ -93,8 +91,8 @@ export const EditPasswordScreen = ({ navigation }) => {
                   );
                 }}
               >
-                <CustomButton title="Ubah" />
-              </TouchableOpacity>
+                Ubah
+              </PrimaryButton>
             </Spacer>
           </ScrollView>
         </MainContainer>
