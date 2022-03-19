@@ -13,7 +13,7 @@ import {
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { AvoidingView } from "../../../components/utility/avoiding-view.component";
-import { PrimaryButton } from "../../../styles/buttons.styles";
+import { PrimaryButton } from "../../../components/buttons/primary-button.component";
 
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 

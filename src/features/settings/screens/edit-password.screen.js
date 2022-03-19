@@ -5,10 +5,10 @@ import { TextInput } from "react-native-paper";
 import { useFocusEffect } from "@react-navigation/native";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
-import { MainContainer } from "../../../styles/containers.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { Text } from "../../../components/typography/text.component";
-import { PrimaryButton } from "../../../styles/buttons.styles";
+import { PrimaryButton } from "../../../components/buttons/primary-button.component";
+import { Container } from "../../../components/utility/container.component";
 
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
@@ -36,7 +36,7 @@ export const EditPasswordScreen = ({ navigation }) => {
   return (
     <SafeArea>
       <CustomKeyboardAvoidingView>
-        <MainContainer>
+        <Container>
           <ScrollView>
             <TextInput
               label="Kata Sandi Lama"
@@ -95,7 +95,7 @@ export const EditPasswordScreen = ({ navigation }) => {
               </PrimaryButton>
             </Spacer>
           </ScrollView>
-        </MainContainer>
+        </Container>
       </CustomKeyboardAvoidingView>
     </SafeArea>
   );

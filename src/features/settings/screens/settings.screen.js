@@ -5,9 +5,9 @@ import styled from "styled-components";
 import { useFocusEffect } from "@react-navigation/native";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
-import { MainContainer } from "../../../styles/containers.styles";
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
+import { Container } from "../../../components/utility/container.component";
 
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
@@ -39,7 +39,7 @@ export const SettingsScreen = ({ navigation }) => {
   return (
     <SafeArea>
       <ScrollView>
-        <MainContainer>
+        <Container>
           <AvatarContainer>
             <Avatar.Image
               size={150}
@@ -76,7 +76,7 @@ export const SettingsScreen = ({ navigation }) => {
               onPress={onLogout}
             />
           </ItemContainer>
-        </MainContainer>
+        </Container>
       </ScrollView>
     </SafeArea>
   );

@@ -4,8 +4,8 @@ import { ScrollView } from "react-native";
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
-import { PrimaryButton } from "../../../styles/buttons.styles";
-import { DetailContainer, Highlight } from "../../../styles/containers.styles";
+import { PrimaryButton } from "../../../components/buttons/primary-button.component";
+import { Container } from "../../../components/utility/container.component";
 
 export const DetailScreen = ({ navigation, route }) => {
   const { result } = route.params;
@@ -15,15 +15,15 @@ export const DetailScreen = ({ navigation, route }) => {
   return (
     <SafeArea>
       <ScrollView>
-        <DetailContainer>
+        <Container>
           <Text>
             Berdasarkan pertanyaan serta jawaban yang kamu jawab. Kemungkinan
             tingkat kecanduan kamu terhadap online game yaitu.
           </Text>
           <Spacer position="top" size="lg">
-            <Highlight>
+            <Container variant="highlight">
               <Text variant="highlight">{result.levelName}</Text>
-            </Highlight>
+            </Container>
           </Spacer>
 
           <Spacer position="top" size="lg" />
@@ -35,7 +35,7 @@ export const DetailScreen = ({ navigation, route }) => {
               </Spacer>
             );
           })}
-        </DetailContainer>
+        </Container>
         <Spacer position="top" size="lg" />
         <PrimaryButton onPress={() => navigation.navigate("Beranda")}>
           Kembali Ke Beranda
