@@ -9,7 +9,7 @@ import { OptionButton } from "../components/option-button.component";
 import {
   OptionContainer,
   QuestionContainer,
-} from "../../../components/utility/containers.styles";
+} from "../../../styles/containers.styles";
 
 import { PrimaryButton } from "../../../styles/buttons.styles";
 

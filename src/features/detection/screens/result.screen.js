@@ -3,10 +3,7 @@ import { ScrollView } from "react-native";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import { Text } from "../../../components/typography/text.component";
-import {
-  DetailContainer,
-  Highlight,
-} from "../../../components/utility/containers.styles";
+import { DetailContainer, Highlight } from "../../../styles/containers.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { PrimaryButton } from "../../../styles/buttons.styles";
 
