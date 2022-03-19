@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { useFocusEffect } from "@react-navigation/native";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
-import { MainContainer } from "../../../components/utility/containers.styles";
+import { MainContainer } from "../../../styles/containers.styles";
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 

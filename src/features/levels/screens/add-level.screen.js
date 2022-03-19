@@ -1,29 +1,19 @@
 import React, { useState, useContext } from "react";
-import styled from "styled-components";
 import { TextInput } from "react-native-paper";
 import { ScrollView } from "react-native";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
-import { MainContainer } from "../../../components/utility/containers.styles";
+import { MainContainer } from "../../../styles/containers.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { AvoidingView } from "../../../components/utility/avoiding-view.component";
 import { PrimaryButton } from "../../../styles/buttons.styles";
+import {
+  CFContainer,
+  CFMaximumInput,
+  CFMinimumInput,
+} from "../components/levels.styles";
 
 import { LevelsContext } from "../../../services/levels/levels.context";
-
-const CFContainer = styled.View`
-  flex-direction: row;
-`;
-
-const CFMinimumInput = styled(TextInput)`
-  flex: 1;
-  margin-right: 5px;
-`;
-
-const CFMaximumInput = styled(TextInput)`
-  flex: 1;
-  margin-left: 5px;
-`;
 
 export const AddLevelScreen = () => {
   const [code, setCode] = useState("");

@@ -3,7 +3,7 @@ import { ScrollView, TouchableOpacity } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
-import { MainContainer } from "../../../components/utility/containers.styles";
+import { MainContainer } from "../../../styles/containers.styles";
 import { SymptomList } from "../components/symptom-list.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { PrimaryButton } from "../../../styles/buttons.styles";

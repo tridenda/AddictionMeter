@@ -2,7 +2,7 @@ import React from "react";
 import { ScrollView } from "react-native-gesture-handler";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
-import { DetailContainer } from "../../../components/utility/containers.styles";
+import { DetailContainer } from "../../../styles/containers.styles";
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 
