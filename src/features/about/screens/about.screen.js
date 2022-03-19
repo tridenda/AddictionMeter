@@ -2,15 +2,15 @@ import React from "react";
 import { ScrollView } from "react-native-gesture-handler";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
-import { DetailContainer } from "../../../styles/containers.styles";
 import { Text } from "../../../components/typography/text.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
+import { Container } from "../../../components/utility/container.component";
 
 export const AboutScreen = () => {
   return (
     <SafeArea>
       <ScrollView>
-        <DetailContainer>
+        <Container>
           <Text>
             Aplikasi ini dibuat untuk siapapun yang ingin mengetahui tingkat
             kecanduan bermain online game (OG), namun tidak untuk permainan
@@ -47,7 +47,7 @@ export const AboutScreen = () => {
               {`\n`}
             </Text>
           </Spacer>
-        </DetailContainer>
+        </Container>
       </ScrollView>
     </SafeArea>
   );

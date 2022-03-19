@@ -6,12 +6,8 @@ import { SafeArea } from "../../../components/utility/safe-area.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { Text } from "../../../components/typography/text.component";
 import { OptionButton } from "../components/option-button.component";
-import {
-  OptionContainer,
-  QuestionContainer,
-} from "../../../styles/containers.styles";
-
-import { PrimaryButton } from "../../../styles/buttons.styles";
+import { PrimaryButton } from "../../../components/buttons/primary-button.component";
+import { Container } from "../../../components/utility/container.component";
 
 import { DetectionContext } from "../../../services/detection/detection.context";
 
@@ -29,13 +25,14 @@ export const DetectionScreen = ({ navigation }) => {
   return (
     <SafeArea>
       <ScrollView ref={ref}>
-        <QuestionContainer>
+        <Spacer position="top" size="lg" />
+        <Container variant="questioner">
           <Text variant="title">{`Pertanyaan ${questionOrder + 1}`}</Text>
           <Spacer position="top" size="sm" />
           <Text>{symptoms[questionOrder].question}</Text>
-        </QuestionContainer>
+        </Container>
 
-        <OptionContainer>
+        <Container variant="option">
           {options.map((elem, i) => {
             return (
               <TouchableOpacity
@@ -46,7 +43,7 @@ export const DetectionScreen = ({ navigation }) => {
               </TouchableOpacity>
             );
           })}
-        </OptionContainer>
+        </Container>
         <Spacer position="top" size="lg" />
 
         {questionOrder > 0 ? (

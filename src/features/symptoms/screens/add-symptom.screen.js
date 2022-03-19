@@ -1,29 +1,15 @@
 import React, { useState, useContext } from "react";
-import styled from "styled-components";
 import { TextInput } from "react-native-paper";
 import { ScrollView } from "react-native";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
-import { MainContainer } from "../../../styles/containers.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { AvoidingView } from "../../../components/utility/avoiding-view.component";
-import { PrimaryButton } from "../../../styles/buttons.styles";
+import { PrimaryButton } from "../../../components/buttons/primary-button.component";
+import { Container } from "../../../components/utility/container.component";
+import { MBInput, MDInput, FormContainer } from "../components/symptoms.styles";
 
 import { SymptomsContext } from "../../../services/symptoms/symptoms.context";
-
-const FormContainer = styled.View`
-  flex-direction: row;
-`;
-
-const MBInput = styled(TextInput)`
-  flex: 1;
-  margin-right: 5px;
-`;
-
-const MDInput = styled(TextInput)`
-  flex: 1;
-  margin-left: 5px;
-`;
 
 export const AddSymptomScreen = () => {
   const [code, setCode] = useState("");
@@ -39,7 +25,7 @@ export const AddSymptomScreen = () => {
   return (
     <SafeArea>
       <AvoidingView>
-        <MainContainer>
+        <Container>
           <ScrollView>
             <TextInput
               label="Kode"
@@ -130,7 +116,7 @@ export const AddSymptomScreen = () => {
               </PrimaryButton>
             </Spacer>
           </ScrollView>
-        </MainContainer>
+        </Container>
       </AvoidingView>
     </SafeArea>
   );

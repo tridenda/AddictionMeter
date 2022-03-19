@@ -3,10 +3,10 @@ import { TextInput } from "react-native-paper";
 import { ScrollView } from "react-native";
 
 import { SafeArea } from "../../../components/utility/safe-area.component";
-import { MainContainer } from "../../../styles/containers.styles";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { AvoidingView } from "../../../components/utility/avoiding-view.component";
-import { PrimaryButton } from "../../../styles/buttons.styles";
+import { PrimaryButton } from "../../../components/buttons/primary-button.component";
+import { Container } from "../../../components/utility/container.component";
 import {
   CFContainer,
   CFMaximumInput,
@@ -28,7 +28,7 @@ export const AddLevelScreen = () => {
   return (
     <SafeArea>
       <AvoidingView>
-        <MainContainer>
+        <Container>
           <ScrollView>
             <TextInput
               label="Kode"
@@ -105,7 +105,7 @@ export const AddLevelScreen = () => {
               </PrimaryButton>
             </Spacer>
           </ScrollView>
-        </MainContainer>
+        </Container>
       </AvoidingView>
     </SafeArea>
   );

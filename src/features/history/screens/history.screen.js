@@ -5,11 +5,11 @@ import { useFocusEffect } from "@react-navigation/native";
 import { SafeArea } from "../../../components/utility/safe-area.component";
 import { HistoryList } from "../components/history-list.component";
 import { Spacer } from "../../../components/spacer/spacer.component";
-import { MainContainer } from "../../../styles/containers.styles";
 import { Text } from "../../../components/typography/text.component";
 import { ResultsContext } from "../../../services/history/history.context";
 import { EmptyContainer } from "../components/history.styles";
-import { PrimaryButton } from "../../../styles/buttons.styles";
+import { PrimaryButton } from "../../../components/buttons/primary-button.component";
+import { Container } from "../../../components/utility/container.component";
 
 export const HistoryScreen = ({ navigation }) => {
   const { results, getResults, deleteAllHistory } = useContext(ResultsContext);
@@ -23,7 +23,7 @@ export const HistoryScreen = ({ navigation }) => {
   return (
     <SafeArea>
       <ScrollView>
-        <MainContainer>
+        <Container>
           {results.map((item, i) => {
             return (
               <Spacer position="top" size="lg" key={`Detail-${i}`}>
@@ -39,7 +39,7 @@ export const HistoryScreen = ({ navigation }) => {
               </Spacer>
             );
           })}
-        </MainContainer>
+        </Container>
         {results.length > 0 ? (
           <PrimaryButton onPress={deleteAllHistory}>
             Hapus Riwayat
