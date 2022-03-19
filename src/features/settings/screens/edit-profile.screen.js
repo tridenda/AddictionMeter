@@ -72,6 +72,7 @@ export const EditProfileScreen = ({ route, navigation }) => {
             <Spacer position="top" size="lg" />
             <TextInput
               label="Nomor HP"
+              keyboardType="numeric"
               mode="outlined"
               value={phone}
               onChangeText={(phone) => setPhone(phone)}
