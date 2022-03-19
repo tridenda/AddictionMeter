@@ -23,7 +23,7 @@ export const EditPasswordScreen = ({ navigation }) => {
   const [newPassword, setNewPassword] = useState("");
   const [repeatedNewPassword, setRepeatedNewPassword] = useState("");
 
-  const { onUpdatePassword, onLoading, error, setError } = useContext(
+  const { onUpdatePassword, error, setError } = useContext(
     AuthenticationContext
   );
 

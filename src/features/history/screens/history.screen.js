@@ -12,8 +12,7 @@ import { EmptyContainer } from "../components/history.styles";
 import { PrimaryButton } from "../../../styles/buttons.styles";
 
 export const HistoryScreen = ({ navigation }) => {
-  const { results, getResults, deleteAllHistory, isLoading, error } =
-    useContext(ResultsContext);
+  const { results, getResults, deleteAllHistory } = useContext(ResultsContext);
 
   useFocusEffect(
     React.useCallback(() => {

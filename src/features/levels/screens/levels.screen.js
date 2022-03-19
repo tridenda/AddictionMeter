@@ -11,7 +11,7 @@ import { LevelsContext } from "../../../services/levels/levels.context";
 import { PrimaryButton } from "../../../styles/buttons.styles";
 
 export const LevelsScreen = ({ navigation }) => {
-  const { levels, getLevels, isLoading, error } = useContext(LevelsContext);
+  const { levels, getLevels } = useContext(LevelsContext);
 
   useFocusEffect(
     React.useCallback(() => {

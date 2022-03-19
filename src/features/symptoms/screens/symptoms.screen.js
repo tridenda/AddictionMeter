@@ -11,8 +11,7 @@ import { PrimaryButton } from "../../../styles/buttons.styles";
 import { SymptomsContext } from "../../../services/symptoms/symptoms.context";
 
 export const SymptomsScreen = ({ navigation }) => {
-  const { symptoms, isLoading, error, getSymptoms } =
-    useContext(SymptomsContext);
+  const { symptoms, getSymptoms } = useContext(SymptomsContext);
 
   useFocusEffect(
     React.useCallback(() => {

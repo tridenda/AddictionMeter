@@ -34,7 +34,7 @@ export const AddSymptomScreen = () => {
   const [description, setDescription] = useState("");
   const [question, setQuestion] = useState("");
 
-  const { addSymptom, isLoading, error } = useContext(SymptomsContext);
+  const { addSymptom } = useContext(SymptomsContext);
 
   return (
     <SafeArea>

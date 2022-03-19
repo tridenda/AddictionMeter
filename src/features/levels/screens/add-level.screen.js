@@ -33,7 +33,7 @@ export const AddLevelScreen = () => {
   const [description, setDescription] = useState("");
   const [solution, setSolution] = useState("");
 
-  const { addLevel, isLoading, error } = useContext(LevelsContext);
+  const { addLevel } = useContext(LevelsContext);
 
   return (
     <SafeArea>

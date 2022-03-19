@@ -8,7 +8,6 @@ import {
 import { doc, getDoc, setDoc } from "firebase/firestore";
 
 import { app, db } from "../../../firebase.config";
-import { async } from "@firebase/util";
 
 export const auth = getAuth(app);
 
