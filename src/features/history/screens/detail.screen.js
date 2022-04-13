@@ -23,6 +23,7 @@ export const DetailScreen = ({ navigation, route }) => {
           <Spacer position="top" size="lg">
             <Container variant="highlight">
               <Text variant="highlight">{result.levelName}</Text>
+              <Text variant="body">Nilai Kepastian: {result.cfValue}</Text>
             </Container>
           </Spacer>
 

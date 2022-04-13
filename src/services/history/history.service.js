@@ -45,6 +45,7 @@ export const resultsTransform = (results = []) => {
 
     return {
       ...res,
+      cfValue: Math.round(res.cf * 10000) / 10000,
       // just in case want to add another custom data
       convertedDate,
     };
