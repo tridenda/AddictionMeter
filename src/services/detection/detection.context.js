@@ -19,16 +19,11 @@ export const DetectionContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState([]);
   const options = [
-    ["A. Sangat Pasti", 1],
-    ["B. Pasti", 0.9],
-    ["C. Hampir Pasti", 0.8],
-    ["D. Kemungkinan Besar", 0.7],
-    ["E. Mungkin", 0.5],
-    ["F. Tidak Tahu", 0.4],
-    ["G. Mungkin Tidak", 0.3],
-    ["H. Kemungkinan Besar Tidak", 0.2],
-    ["I. Hampir Pasti Tidak", 0.1],
-    ["J. Pasti Tidak", 0],
+    ["A. Pasti", 1],
+    ["B. Hampir Pasti", 0.8],
+    ["C. Mungkin", 0.5],
+    ["D. Mungkin Tidak", 0.2],
+    ["E. Pasti Tidak", 0],
   ];
 
   const getSymptoms = () => {
@@ -104,6 +99,8 @@ export const DetectionContextProvider = ({ children }) => {
               setIsLoading(false);
               setQuestionOrder(0);
               setAnswers([]);
+
+              res.cfValue = Math.round(res.cf * 10000) / 10000;
               navigation.navigate("Hasil", {
                 result: res,
               });

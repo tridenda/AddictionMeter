@@ -23,6 +23,7 @@ export const ResultScreen = ({ navigation, route }) => {
           <Spacer position="top" size="lg">
             <Container variant="highlight">
               <Text variant="highlight">{result.levelName}</Text>
+              <Text>Nilai Kepastian: {result.cfValue}</Text>
             </Container>
           </Spacer>
 
