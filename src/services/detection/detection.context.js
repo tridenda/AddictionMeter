@@ -20,17 +20,10 @@ export const DetectionContextProvider = ({ children }) => {
   const [error, setError] = useState([]);
   const options = [
     ["A. Pasti", 1],
-<<<<<<< HEAD
-    ["B. Hampir Pasti", 0.8],
-    ["C. Mungkin", 0.5],
-    ["D. Mungkin Tidak", 0.2],
-    ["E. Pasti Tidak", 0],
-=======
     ["B. Hampir pasti", 0.8],
     ["C. Mungkin", 0.5],
     ["D. Mungkin tidak", 0.2],
     ["E. Pasti tidak", 0],
->>>>>>> main
   ];
 
   const getSymptoms = () => {
