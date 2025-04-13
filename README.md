@@ -35,6 +35,10 @@ This application was created as part of my final project and undergraduate thesi
 
 If you're interested in running or contributing to the project, feel free to clone the repository and follow the setup instructions provided in the project folder.
 
+## 📄 License
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
+
 ---
 
 *Made with ❤️ as a final thesis project in Computer Science.*
